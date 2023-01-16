@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {  defineAsyncComponent } from 'vue'
+import { defineAsyncComponent } from 'vue'
 const ProductsList = defineAsyncComponent(() => import('./components/product/FoodList.vue'))
 </script>
 
