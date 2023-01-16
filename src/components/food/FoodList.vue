@@ -4,9 +4,9 @@ import { ref, defineAsyncComponent } from 'vue'
 import FoodType from './FoodType';
 const Product = defineAsyncComponent(() => import('./Food.vue'));
 
-const snackbar = ref<boolean>(false)
-const loaded = ref<boolean>(false)
-const loading = ref<boolean>(false)
+const snackbar = ref(false)
+const loaded = ref(false)
+const loading = ref(false)
 const snackbarMsg = ref<null | string>(null)
 
 const products = ref<FoodType[]>([])
@@ -41,7 +41,7 @@ const onClick = () => {
         <v-btn value="left">
           <span class="hidden-sm-and-down">Pizza</span>
 
-          <v-icon end>
+          <v-icon color="red" end>
             mdi-pizza
           </v-icon>
         </v-btn>
@@ -57,7 +57,8 @@ const onClick = () => {
         <v-btn value="right">
           <span class="hidden-sm-and-down">Burger</span>
 
-          <v-icon end>
+          <v-icon color="#FFAB00
+" end>
             mdi-hamburger
           </v-icon>
         </v-btn>
