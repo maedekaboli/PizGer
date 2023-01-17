@@ -2,7 +2,10 @@
 import { ref } from 'vue'
 import SelectedFoodType from './selectedFoodType'
 
-const amenities = ref<number[]>([])
+const ingredients = ref<string[]>([
+    'Tomato', 'Onion', 'Garlic', 'Cheese', 'Parsley ','Basil', 'Olive', 'Egg','Sauce'
+
+])
 const foods = ref<SelectedFoodType[]>([
     { value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' },
     { value: 2, name: 'Burger', icon: 'mdi-hamburger', color: '#FFAB00' }
@@ -30,7 +33,7 @@ const selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi
     </v-item-group>
 
     <v-col cols="md-12">
-        <v-card class="px-6">
+        <v-card class="px-6 py-10">
             <v-row>
                 <v-col cols="md-7">
                     <v-card-title class="mb-8">
@@ -49,13 +52,11 @@ const selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi
                         </v-col>
                     </v-row>
                     <v-row>
-                        <v-chip-group v-model="amenities" column multiple>
-                            <v-chip filter variant="outlined">
-                                Elevator
+                        <v-chip-group column multiple selected-class="text-primary">
+                            <v-chip v-for="item in ingredients" :key="item" filter variant="outlined">
+                                {{ item }}
                             </v-chip>
-                            <v-chip filter variant="outlined">
-                                Washer / Dryer
-                            </v-chip></v-chip-group>
+                        </v-chip-group>
                     </v-row>
                 </v-col>
                 <v-col cols="md-5" class="border-left resturant my-3">
