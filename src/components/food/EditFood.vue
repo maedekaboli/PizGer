@@ -1,15 +1,38 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-const selected = ref<string[]>([])
+const amenities = ref<number[]>([])
+const foods = ref([
+    { value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' },
+    { value: 2, name: 'Burger', icon: 'mdi-hamburger', color: '#FFAB00' }
+])
+const selectedFood = ref<object>({ value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' })
+
 </script>
 
+
 <template>
+    <v-item-group mandatory selected-class="bg-primary">
+        <v-container>
+            <v-row>
+                <v-col cols="12" md="2">
+                    <v-btn-toggle v-model="selectedFood" mandatory borderless color="deep-purple-accent-3">
+                        <v-btn :value="n" v-for="n in foods" :key="n">
+                            <v-icon :color="n.color" center size="30px">
+                                {{ n.icon }}
+                            </v-icon>
+                        </v-btn>
+                    </v-btn-toggle>
+                </v-col>
+            </v-row>
+        </v-container>
+    </v-item-group>
+
     <v-col cols="md-12">
         <v-card class="px-6">
             <v-row>
                 <v-col cols="md-7">
                     <v-card-title class="mb-8">
-                        Food
+                        {{ selectedFood.name }}
                     </v-card-title>
                     <v-row>
                         <v-col cols="12" sm="6">
@@ -24,11 +47,13 @@ const selected = ref<string[]>([])
                         </v-col>
                     </v-row>
                     <v-row>
-                        <v-col cols="auto">
-                            <v-checkbox v-model="selected" label="Jojgufytdryhn" value="John"></v-checkbox></v-col>
-                        <v-col cols="auto">
-                            <v-checkbox v-model="selected" label="Jacob" value="Jacob"></v-checkbox>
-                        </v-col>
+                        <v-chip-group v-model="amenities" column multiple>
+                            <v-chip filter variant="outlined">
+                                Elevator
+                            </v-chip>
+                            <v-chip filter variant="outlined">
+                                Washer / Dryer
+                            </v-chip></v-chip-group>
                     </v-row>
                 </v-col>
                 <v-col cols="md-5" class="border-left resturant my-3">
@@ -36,8 +61,8 @@ const selected = ref<string[]>([])
                         Resturant
                     </v-card-title>
                     <v-col cols="12">
-                            <v-text-field model-value="John Doe" label="name" variant="outlined"></v-text-field>
-                        </v-col>
+                        <v-text-field model-value="John Doe" label="name" variant="outlined"></v-text-field>
+                    </v-col>
                 </v-col>
             </v-row>
         </v-card>

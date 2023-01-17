@@ -17,6 +17,7 @@ await axios.get('products').then(res => {
   snackbarMsg.value = err
 })
 
+
 const onClick = () => {
   loading.value = true
 
@@ -37,7 +38,7 @@ const onClick = () => {
         append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="onClick"></v-text-field>
     </v-col>
     <v-col cols="md-6">
-      <v-btn-toggle borderless color="deep-purple-accent-3">
+      <v-btn-toggle borderless mandatory color="deep-purple-accent-3">
         <v-btn value="left">
           <span class="hidden-sm-and-down">Pizza</span>
 

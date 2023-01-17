@@ -13,7 +13,7 @@ const show = ref(false)
 <template>
     <v-col cols="md-4 Product">
         <v-card class="mx-auto">
-            <v-img :src="`https://api.lorem.space/image/${product.id % 2 === 0 ? 'pizza' : 'burger'}?w=365&h=200&hash=${product.id}`
+            <v-img :src="`https://api.lorem.space/image/burger?w=365&h=200&hash=${product.id}`
             " height="200px" cover></v-img>
 
             <v-card-title class="pb-0">
