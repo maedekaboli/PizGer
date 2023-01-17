@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import SelectedFoodType from './selectedFoodType'
+
 const amenities = ref<number[]>([])
-const foods = ref([
+const foods = ref<SelectedFoodType[]>([
     { value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' },
     { value: 2, name: 'Burger', icon: 'mdi-hamburger', color: '#FFAB00' }
 ])
-const selectedFood = ref<object>({ value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' })
+const selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' })
 
 </script>
 
