@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import SelectedFoodType from './selectedFoodType'
 
 const ingredients = ref<string[]>([
-    'Tomato', 'Onion', 'Garlic', 'Cheese', 'Parsley ','Basil', 'Olive', 'Egg','Sauce'
+    'Tomato', 'Onion', 'Garlic', 'Cheese', 'Parsley ', 'Basil', 'Olive', 'Egg', 'Sauce'
 
 ])
 const foods = ref<SelectedFoodType[]>([
@@ -52,7 +52,7 @@ const selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi
                         </v-col>
                     </v-row>
                     <v-row>
-                        <v-chip-group column multiple selected-class="text-primary">
+                        <v-chip-group column multiple selected-class="text-success">
                             <v-chip v-for="item in ingredients" :key="item" filter variant="outlined">
                                 {{ item }}
                             </v-chip>
@@ -69,6 +69,10 @@ const selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi
                 </v-col>
             </v-row>
         </v-card>
+
+        <v-btn class="mt-5" size="large" color="info">
+            Edit {{ selectedFood.name }}
+        </v-btn>
     </v-col>
 </template>
 
