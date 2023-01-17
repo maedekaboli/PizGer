@@ -26,7 +26,9 @@ const show = ref(false)
             </v-chip>
 
             <v-card-actions>
-                <v-btn color="blue" variant="outlined" size="x-small" icon="mdi-pencil-outline"></v-btn>
+                <router-link :to="`/food/${product.id}`">
+                    <v-btn color="blue" variant="outlined" size="x-small" icon="mdi-pencil-outline"></v-btn>
+                </router-link>
                 <v-btn color="red" variant="outlined" size="x-small" icon="mdi-trash-can-outline"></v-btn>
 
                 <v-spacer></v-spacer>
@@ -38,7 +40,8 @@ const show = ref(false)
                 <div v-show="show">
                     <v-divider></v-divider>
                     <div class="mt-6 mx-2">
-                        <v-chip class="mr-1 mb-2" v-for="i in 10" :key="i" variant="elevated" color="#546E7A" size="x-small">
+                        <v-chip class="mr-1 mb-2" v-for="i in 10" :key="i" variant="elevated" color="#546E7A"
+                            size="x-small">
                             Chip and khiar
                         </v-chip>
                     </div>

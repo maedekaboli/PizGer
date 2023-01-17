@@ -6,3 +6,8 @@
 .v-card {
   border-radius: 16px !important;
 }
+
+
+a {
+  text-decoration: none;
+}
