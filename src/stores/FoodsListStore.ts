@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import FoodType from '../components/food/FoodType'
 import FoodStateModel from './FoodStateModel'
 import axios from '../api'
 
@@ -18,7 +19,7 @@ const actions = {
     },
     async deleteFood(id: number) {
         await axios.delete(`foods/${id}`).then(res => {
-            console.log(res)
+            this.foodsList = this.foodsList.filter((f: FoodType) => f.id != id)
         }).catch(err => {
             // snackbar.value = true
             // snackbarMsg.value = err
