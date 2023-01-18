@@ -24,6 +24,14 @@ const actions = {
             // snackbar.value = true
             // snackbarMsg.value = err
         })
+    },
+    async addFood(params: any) {
+        await axios.post(`foods`, params).then(res => {
+            this.foodsList.unshift(res?.data)
+        }).catch(err => {
+            // snackbar.value = true
+            // snackbarMsg.value = err
+        })
     }
 }
 

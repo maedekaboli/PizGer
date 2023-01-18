@@ -7,7 +7,8 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: '/', component: AllFoods },
-        { path: '/food/:id', component: EditFood }
+        { path: '/food/:id', component: EditFood },
+        { path: '/food', component: EditFood },
     ]
 })
 export default router
