@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import FoodType from './FoodType'
 import useFoodsListStore from '../../stores/FoodsListStore'
-
-defineProps<{
+const props = defineProps<{
     food: FoodType
 }>()
 
@@ -12,14 +11,24 @@ const { deleteFood } = useFoodsListStore()
 const onDeleteFood = (id: number) => {
     deleteFood(id)
 }
+
+const foodImg = computed(() => {
+    return `https://api.lorem.space/image/${props.food.category == 1 ? 'pizza' : 'burger'}?w=365&h=200&hash=${props.food.id}`
+})
+
 </script>
 
 
 <template>
     <v-col cols="md-4 Product" sm="6">
         <v-card class="mx-auto">
-            <v-img :src="`https://api.lorem.space/image/${food.category == 1 ? 'pizza' : 'burger'}?w=365&h=200&hash=${food.id}`
-            " height="200px" cover></v-img>
+            <v-img lazy-src="/bg.jpg" :src="foodImg" height="200px" cover>
+                <template v-slot:placeholder>
+                    <div class="d-flex align-end justify-center fill-height">
+                        <v-progress-linear color="grey" indeterminate></v-progress-linear>
+                    </div>
+                </template>
+            </v-img>
 
             <v-card-title class="pb-0">
                 {{ food.name }}
