@@ -15,6 +15,9 @@ const onDeleteFood = (id: number) => {
 const foodImg = computed(() => {
     return `https://api.lorem.space/image/${props.food.category == 1 ? 'pizza' : 'burger'}?w=365&h=200&hash=${props.food.id}`
 })
+const lazySrc = computed(() => {
+    return props.food.category == 1 ? '/pizza-bg.jpg' : '/burger-bg.jpg'
+})
 
 </script>
 
@@ -22,10 +25,10 @@ const foodImg = computed(() => {
 <template>
     <v-col cols="md-4 Product" sm="6">
         <v-card class="mx-auto">
-            <v-img lazy-src="/bg.jpg" :src="foodImg" height="200px" cover>
+            <v-img :lazySrc="lazySrc" :src="foodImg" height="200px" cover>
                 <template v-slot:placeholder>
                     <div class="d-flex align-end justify-center fill-height">
-                        <v-progress-linear color="grey" indeterminate></v-progress-linear>
+                        <v-progress-linear color="#6200ee" indeterminate></v-progress-linear>
                     </div>
                 </template>
             </v-img>
