@@ -2,16 +2,16 @@
 import axios from '../../api'
 import { ref, defineAsyncComponent } from 'vue'
 import FoodType from './FoodType';
-const Product = defineAsyncComponent(() => import('./Food.vue'));
+const Food = defineAsyncComponent(() => import('./Food.vue'));
 
 const snackbar = ref(false)
 const loaded = ref(false)
 const loading = ref(false)
-const snackbarMsg = ref<null | string>(null)
+const snackbarMsg = ref(null)
 
-const products = ref<FoodType[]>([])
-await axios.get('products').then(res => {
-  products.value = res?.data?.products
+const foods = ref<FoodType[]>([])
+await axios.get('foods').then(res => {
+  foods.value = res?.data
 }).catch(err => {
   snackbar.value = true
   snackbarMsg.value = err
@@ -33,12 +33,12 @@ const onClick = () => {
 <template>
   <v-row class="fill-height mb-10" align-content="center" justify="center">
 
-    <v-col cols="md-6">
-      <v-text-field :loading="loading" density="compact" variant="solo" label="Search templates"
-        append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="onClick"></v-text-field>
+    <v-col cols="md-6" sm="8">
+      <v-text-field :loading="loading" density="compact" variant="solo" label="Search" append-inner-icon="mdi-magnify"
+        single-line hide-details @click:append-inner="onClick"></v-text-field>
     </v-col>
-    <v-col cols="md-6">
-      <v-btn-toggle borderless mandatory color="deep-purple-accent-3">
+    <v-col cols="md-6" sm="4">
+      <v-btn-toggle elevation="1" borderless mandatory rounded="xl" color="deep-purple-accent-3">
         <v-btn value="left">
           <span class="hidden-sm-and-down">Pizza</span>
 
@@ -67,8 +67,8 @@ const onClick = () => {
     </v-col>
   </v-row>
   <div class="d-flex flex-row flex-wrap">
-    <Product v-for="product in products" :key="product.id" :product="product">
-    </Product>
+    <Food v-for="food in foods" :key="food.id" :food="food">
+    </Food>
   </div>
   <v-snackbar v-model="snackbar" :timeout="5000" color="red accent-1" location="top">
     {{ snackbarMsg }}

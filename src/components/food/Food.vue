@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import FoodType from './FoodType'
 
 defineProps<{
-    product: FoodType
+    food: FoodType
 }>()
 
 const show = ref(false)
@@ -11,25 +11,27 @@ const show = ref(false)
 
 
 <template>
-    <v-col cols="md-4 Product">
+    <v-col cols="md-4 Product" sm="6">
         <v-card class="mx-auto">
-            <v-img :src="`https://api.lorem.space/image/burger?w=365&h=200&hash=${product.id}`
+            <v-img :src="`https://api.lorem.space/image/burger?w=365&h=200&hash=${food.id}`
             " height="200px" cover></v-img>
 
             <v-card-title class="pb-0">
-                {{ product.title }}
+                {{ food.name }}
             </v-card-title>
-            <v-card-subtitle>{{ product.brand }}</v-card-subtitle>
-            <v-chip class="mx-2 mt-6" color="indigo">
+            <v-card-subtitle>
+                <v-icon> mdi-map-marker </v-icon>
+                {{ 'food.brand' }}</v-card-subtitle>
+            <v-chip class=" mx-2 mt-6" color="indigo">
                 <v-icon start icon="mdi-currency-usd"></v-icon>
-                {{ product.price }}
+                {{ food.price }}
             </v-chip>
 
             <v-card-actions>
-                <router-link :to="`/food/${product.id}`">
+                <router-link :to="`/food/${food.id}`">
                     <v-btn color="blue" variant="outlined" size="x-small" icon="mdi-pencil-outline"></v-btn>
                 </router-link>
-                <v-btn color="red" variant="outlined" size="x-small" icon="mdi-trash-can-outline"></v-btn>
+                <v-btn color="red" class="ml-2" variant="outlined" size="x-small" icon="mdi-trash-can-outline"></v-btn>
 
                 <v-spacer></v-spacer>
 
@@ -46,7 +48,7 @@ const show = ref(false)
                         </v-chip>
                     </div>
                     <v-card-text>
-                        {{ product.description }}
+                        {{ food.desc }}
                     </v-card-text>
                 </div>
             </v-expand-transition>

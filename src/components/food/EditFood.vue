@@ -20,7 +20,7 @@ const selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi
         <v-container>
             <v-row>
                 <v-col cols="12" md="2">
-                    <v-btn-toggle v-model="selectedFood" mandatory borderless color="deep-purple-accent-3">
+                    <v-btn-toggle elevation="1" rounded="xl" v-model="selectedFood" mandatory borderless color="deep-purple-accent-3">
                         <v-btn :value="n" v-for="n in foods" :key="n">
                             <v-icon :color="n.color" center size="30px">
                                 {{ n.icon }}
@@ -73,6 +73,11 @@ const selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi
         <v-btn class="mt-5" size="large" color="info">
             Edit {{ selectedFood.name }}
         </v-btn>
+        <router-link to="/">
+            <v-btn class="mt-5 ml-4" size="large" color="black" variant="outlined">
+                back
+            </v-btn>
+        </router-link>
     </v-col>
 </template>
 
