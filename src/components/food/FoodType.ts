@@ -4,4 +4,5 @@ export default interface FoodType {
     name: string
     desc: string
     price: number
+    category: number
 }

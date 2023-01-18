@@ -70,11 +70,11 @@ const selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi
             </v-row>
         </v-card>
 
-        <v-btn class="mt-5" size="large" color="info">
+        <v-btn rounded="pill" class="mt-5" size="large" color="info">
             Edit {{ selectedFood.name }}
         </v-btn>
         <router-link to="/">
-            <v-btn class="mt-5 ml-4" size="large" color="black" variant="outlined">
+            <v-btn rounded="pill" class="mt-5 ml-4" size="large" color="black" variant="outlined">
                 back
             </v-btn>
         </router-link>

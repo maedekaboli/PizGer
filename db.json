@@ -1,0 +1,28 @@
+{
+    "foods": [
+        {
+            "name": "hamburger",
+            "price": 42,
+            "desc": "delicious hamburger",
+            "id": 1,
+            "category": 1
+        },
+        {
+            "name": "pizza",
+            "price": 42,
+            "desc": "delicious hamburger",
+            "id": 2,
+            "category": 1
+        }
+    ],
+    "comments": [
+        {
+            "id": 1,
+            "body": "some comment",
+            "postId": 1
+        }
+    ],
+    "profile": {
+        "name": "typicode"
+    }
+}
