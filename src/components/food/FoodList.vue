@@ -10,10 +10,13 @@ const snackbar = ref(false)
 const loaded = ref(false)
 const loading = ref(false)
 const snackbarMsg = ref(null)
+const query = ref('')
+
 
 getFoodsList()
 
 const onClick = () => {
+  getFoodsList(`name`, query.value)
   loading.value = true
 
   setTimeout(() => {
@@ -27,8 +30,8 @@ const onClick = () => {
   <v-row class="fill-height mb-10" align-content="center" justify="center">
 
     <v-col cols="md-6" sm="8">
-      <v-text-field :loading="loading" density="compact" variant="solo" label="Search" append-inner-icon="mdi-magnify"
-        single-line hide-details @click:append-inner="onClick"></v-text-field>
+      <v-text-field v-model="query" :loading="loading" density="compact" variant="solo" label="Search"
+        append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="onClick"></v-text-field>
     </v-col>
     <v-col cols="md-6" sm="4">
       <v-btn-toggle elevation="1" borderless mandatory rounded="xl" color="deep-purple-accent-3">
