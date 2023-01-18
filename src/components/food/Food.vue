@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import FoodType from './FoodType'
+import useFoodsListStore from '../../stores/FoodsListStore'
 
 defineProps<{
     food: FoodType
 }>()
 
 const show = ref(false)
+const { deleteFood } = useFoodsListStore()
+const onDeleteFood = (id: number) => {
+    deleteFood(id)
+}
 </script>
 
 
@@ -31,7 +36,8 @@ const show = ref(false)
                 <router-link :to="`/food/${food.id}`">
                     <v-btn color="blue" variant="outlined" size="x-small" icon="mdi-pencil-outline"></v-btn>
                 </router-link>
-                <v-btn color="red" class="ml-2" variant="outlined" size="x-small" icon="mdi-trash-can-outline"></v-btn>
+                <v-btn @click="onDeleteFood(food.id)" color="red" class="ml-2" variant="outlined" size="x-small"
+                    icon="mdi-trash-can-outline"></v-btn>
 
                 <v-spacer></v-spacer>
 

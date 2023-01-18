@@ -3,7 +3,7 @@ import FoodStateModel from './FoodStateModel'
 import axios from '../api'
 
 const actions = {
-    async getFoodsList(queryName?: string, queryValue?: number) {
+    async getFoodsList(queryName?: string, queryValue?: number | string) {
         let url: string;
         if (queryName && queryValue)
             url = `foods?${queryName}_like=${queryValue}`
@@ -11,6 +11,14 @@ const actions = {
             url = 'foods'
         await axios.get(url).then(res => {
             this.foodsList = res?.data
+        }).catch(err => {
+            // snackbar.value = true
+            // snackbarMsg.value = err
+        })
+    },
+    async deleteFood(id: number) {
+        await axios.delete(`foods/${id}`).then(res => {
+            console.log(res)
         }).catch(err => {
             // snackbar.value = true
             // snackbarMsg.value = err
