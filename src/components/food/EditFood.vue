@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref } from 'vue'
 import SelectedFoodType from './selectedFoodType'
 import useFoodsListStore from '../../stores/FoodsListStore'
 
@@ -12,7 +12,8 @@ const foods = ref<SelectedFoodType[]>([
     { value: 2, name: 'Burger', icon: 'mdi-hamburger', color: '#FFAB00' }
 ])
 const selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' })
-const food = reactive({
+
+const food = ref({
     name: '',
     desc: '',
     price: null,
@@ -27,22 +28,18 @@ const onSubmit = () => {
 
 
 <template>
-    <v-item-group mandatory selected-class="bg-primary">
-        <v-container>
-            <v-row>
-                <v-col cols="12" md="2">
-                    <v-btn-toggle elevation="1" rounded="xl" v-model="selectedFood" mandatory borderless
-                        color="deep-purple-accent-3">
-                        <v-btn :value="n" v-for="n in foods" :key="n">
-                            <v-icon :color="n.color" center size="30px">
-                                {{ n.icon }}
-                            </v-icon>
-                        </v-btn>
-                    </v-btn-toggle>
-                </v-col>
-            </v-row>
-        </v-container>
-    </v-item-group>
+    <v-row>
+        <v-col cols="12" md="2">
+            <v-btn-toggle elevation="1" rounded="xl" v-model="selectedFood" mandatory borderless
+                color="deep-purple-accent-3">
+                <v-btn :value="n" v-for="n in foods" :key="n">
+                    <v-icon :color="n.color" center size="30px">
+                        {{ n.icon }}
+                    </v-icon>
+                </v-btn>
+            </v-btn-toggle>
+        </v-col>
+    </v-row>
 
     <v-col cols="md-12">
         <v-card class="px-6 py-10">

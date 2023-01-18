@@ -18,7 +18,7 @@ const onDeleteFood = (id: number) => {
 <template>
     <v-col cols="md-4 Product" sm="6">
         <v-card class="mx-auto">
-            <v-img :src="`https://api.lorem.space/image/burger?w=365&h=200&hash=${food.id}`
+            <v-img :src="`https://api.lorem.space/image/${food.category == 1 ? 'pizza' : 'burger'}?w=365&h=200&hash=${food.id}`
             " height="200px" cover></v-img>
 
             <v-card-title class="pb-0">
