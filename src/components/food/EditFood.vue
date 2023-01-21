@@ -12,7 +12,7 @@ const foods = ref<SelectedFoodType[]>([
     { value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' },
     { value: 2, name: 'Burger', icon: 'mdi-hamburger', color: '#FFAB00' }
 ])
-const selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' })
+let selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' })
 
 const food = ref({
     name: '',
@@ -27,7 +27,7 @@ const onSubmit = () => {
 }
 
 const onToggleBtns = (selectedBtn: SelectedFoodType) => {
-    console.log(selectedBtn)
+    selectedFood.value = selectedBtn
 }
 </script>
 
