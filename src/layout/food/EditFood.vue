@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineAsyncComponent } from 'vue'
+import { ref, defineAsyncComponent, reactive } from 'vue'
 import SelectedFoodType from './models/SelectedFoodType'
 import useFoodsListStore from '../../stores/FoodsListStore'
 const ToggleButton = defineAsyncComponent(() => import('../../components/ToggleButton.vue'))
@@ -14,11 +14,11 @@ const foods = ref<SelectedFoodType[]>([
 ])
 let selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red', showName: false })
 
-const food = ref({
+const food = reactive({
     name: '',
     desc: '',
     price: null,
-    category: selectedFood.value.value
+    category: 1
 })
 
 const { addFood } = useFoodsListStore()
@@ -28,6 +28,7 @@ const onSubmit = () => {
 
 const onToggleBtns = (selectedBtn: SelectedFoodType) => {
     selectedFood.value = selectedBtn
+    food.category = selectedFood.value.value
 }
 </script>
 
