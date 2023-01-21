@@ -4,4 +4,5 @@ export default interface SelectedFoodType {
     icon?: string
     color?: string
     showName?: boolean
+    iconSize?: string
 }

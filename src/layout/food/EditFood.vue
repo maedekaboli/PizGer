@@ -9,8 +9,8 @@ const ingredients = ref<string[]>([
 
 ])
 const foods = ref<SelectedFoodType[]>([
-    { value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' },
-    { value: 2, name: 'Burger', icon: 'mdi-hamburger', color: '#FFAB00' }
+    { value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red', iconSize: '30px' },
+    { value: 2, name: 'Burger', icon: 'mdi-hamburger', color: '#FFAB00', iconSize: '30px' }
 ])
 let selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red', showName: false })
 
