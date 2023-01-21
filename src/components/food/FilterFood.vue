@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import SelectedFoodType from './selectedFoodType'
 import useFoodsListStore from '../../stores/FoodsListStore'
 
@@ -14,7 +14,7 @@ const foods = ref<SelectedFoodType[]>([
 const selectedFood = ref<SelectedFoodType>({ value: 0, name: 'All', icon: 'mdi-clipboard-list-outline', color: 'black' })
 const query = ref('')
 
-const onClick = () => {
+const onFilter = () => {
     getFoodsList(`name`, query.value)
     loading.value = true
 
@@ -23,6 +23,12 @@ const onClick = () => {
         loaded.value = true
     }, 2000)
 }
+watch(
+    () => selectedFood.value,
+    newValue => {
+        getFoodsList(`category`, newValue.value)
+    }
+)
 
 </script>
 
@@ -31,7 +37,7 @@ const onClick = () => {
     <v-row class="fill-height mb-10" align-content="center" justify="center">
         <v-col cols="md-6" sm="8">
             <v-text-field v-model="query" :loading="loading" density="compact" variant="solo" label="Search"
-                append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="onClick"></v-text-field>
+                append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="onFilter"></v-text-field>
         </v-col>
         <v-col cols="md-6" sm="4">
             <v-btn-toggle elevation="1" rounded="xl" v-model="selectedFood" mandatory borderless
