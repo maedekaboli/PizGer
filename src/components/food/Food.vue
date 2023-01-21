@@ -59,12 +59,6 @@ const lazySrc = computed(() => {
             <v-expand-transition>
                 <div v-show="show">
                     <v-divider></v-divider>
-                    <div class="mt-6 mx-2">
-                        <v-chip class="mr-1 mb-2" v-for="i in 10" :key="i" variant="elevated" color="#546E7A"
-                            size="x-small">
-                            Chip and khiar
-                        </v-chip>
-                    </div>
                     <v-card-text>
                         {{ food.desc }}
                     </v-card-text>
