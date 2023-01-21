@@ -12,18 +12,18 @@ const emit = defineEmits(['toggleBtns'])
 const selectedFood = ref<SelectedFoodType>(props.selectedFood)
 
 watch(
-    () => selectedFood.value,
+    () => selectedFood.value.value,
     () => {
         emit('toggleBtns', selectedFood.value)
-    }
+    },{immediate:true}
 )
 </script>
 
 <template>
-    <v-btn-toggle elevation="1" rounded="xl" v-model="selectedFood" mandatory borderless color="deep-purple-accent-3">
-        <v-btn :value="n" v-for="n in foods" :key="n">
+    <v-btn-toggle group elevation="1" rounded="xl" v-model="selectedFood" mandatory borderless color="deep-purple-accent-3">
+        <v-btn :value="n" v-for="n in foods" :key="n.value">
             <span class="hidden-sm-and-down mr-2" v-if="n.showName">{{ n.name }}</span>
-            <v-icon :color="n.color" center>
+            <v-icon :size="n.iconSize" :color="n.color" center>
                 {{ n.icon }}
             </v-icon>
         </v-btn>
