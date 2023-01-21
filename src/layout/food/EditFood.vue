@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { ref, defineAsyncComponent, reactive } from 'vue'
-import SelectedFoodType from './models/SelectedFoodType'
 import useFoodsListStore from '../../stores/FoodsListStore'
+import { storeToRefs } from 'pinia'
+import SelectedFoodType from './models/SelectedFoodType'
 const ToggleButton = defineAsyncComponent(() => import('../../components/ToggleButton.vue'))
+
+
+const { loading } = storeToRefs(useFoodsListStore())
 
 const ingredients = ref<string[]>([
     'Tomato', 'Onion', 'Garlic', 'Cheese', 'Parsley ', 'Basil', 'Olive', 'Egg', 'Sauce'
@@ -78,7 +82,8 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
             </v-row>
         </v-card>
 
-        <v-btn @click="onSubmit" rounded="pill" class="mt-5" size="large" color="info">
+        <v-btn @click="onSubmit" :loading="loading" :disabled="loading" rounded="pill" class="mt-5" size="large"
+            color="info">
             Edit {{ selectedFood.name }}
         </v-btn>
         <router-link to="/">
