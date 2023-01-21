@@ -24,6 +24,7 @@ const onFilter = () => {
         loaded.value = true
     }, 2000)
 }
+
 const onToggleBtns = (selectedBtn: SelectedFoodType) => {
     getFoodsList(`category`, selectedBtn.value)
 }

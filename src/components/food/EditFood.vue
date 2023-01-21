@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, defineAsyncComponent } from 'vue'
 import SelectedFoodType from './selectedFoodType'
 import useFoodsListStore from '../../stores/FoodsListStore'
+const ToggleButton = defineAsyncComponent(() => import('./ToggleButton.vue'))
 
 const ingredients = ref<string[]>([
     'Tomato', 'Onion', 'Garlic', 'Cheese', 'Parsley ', 'Basil', 'Olive', 'Egg', 'Sauce'
@@ -24,20 +25,17 @@ const { addFood } = useFoodsListStore()
 const onSubmit = () => {
     addFood(food)
 }
+
+const onToggleBtns = (selectedBtn: SelectedFoodType) => {
+    console.log(selectedBtn)
+}
 </script>
 
 
 <template>
     <v-row>
         <v-col cols="12" md="2">
-            <v-btn-toggle elevation="1" rounded="xl" v-model="selectedFood" mandatory borderless
-                color="deep-purple-accent-3">
-                <v-btn :value="n" v-for="n in foods" :key="n">
-                    <v-icon :color="n.color" center size="30px">
-                        {{ n.icon }}
-                    </v-icon>
-                </v-btn>
-            </v-btn-toggle>
+            <ToggleButton :selectedFood="selectedFood" :foods="foods" @toggleBtns="onToggleBtns"></ToggleButton>
         </v-col>
     </v-row>
 
