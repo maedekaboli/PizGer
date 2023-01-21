@@ -1,7 +1,8 @@
+import { defineAsyncComponent } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import AllFoods from './layout/AllFoods.vue'
-import EditFood from './components/food/EditFood.vue'
-import NotFound from './layout/NotFound.vue'
+const AllFoods = () => import('./layout/AllFoods.vue')
+const EditFood = defineAsyncComponent(() => import('./components/food/EditFood.vue'))
+const NotFound = defineAsyncComponent(() => import('./layout/NotFound.vue'))
 
 const router = createRouter({
     history: createWebHistory(),
