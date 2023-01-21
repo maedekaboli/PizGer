@@ -12,7 +12,7 @@ const foods = ref<SelectedFoodType[]>([
     { value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' },
     { value: 2, name: 'Burger', icon: 'mdi-hamburger', color: '#FFAB00' }
 ])
-let selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' })
+let selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red', showName: false })
 
 const food = ref({
     name: '',

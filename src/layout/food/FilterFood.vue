@@ -8,11 +8,11 @@ const { getFoodsList } = useFoodsListStore()
 const loaded = ref(false)
 const loading = ref(false)
 const foods = ref<SelectedFoodType[]>([
-    { value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red' },
-    { value: 0, name: 'All', icon: 'mdi-clipboard-list-outline', color: 'black' },
-    { value: 2, name: 'Burger', icon: 'mdi-hamburger', color: '#FFAB00' }
+    { value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red', showName: true  },
+    { value: 0, name: 'All', icon: 'mdi-clipboard-list-outline', color: 'black', showName: true  },
+    { value: 2, name: 'Burger', icon: 'mdi-hamburger', color: '#FFAB00', showName: true  }
 ])
-const selectedFood = ref<SelectedFoodType>({ value: 0, name: 'All', icon: 'mdi-clipboard-list-outline', color: 'black' })
+const selectedFood = ref<SelectedFoodType>({ value: 0, name: 'All', icon: 'mdi-clipboard-list-outline', color: 'black', showName: true })
 const query = ref('')
 
 const onFilter = () => {
