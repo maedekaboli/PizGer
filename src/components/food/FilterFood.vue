@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, defineAsyncComponent } from 'vue'
 import SelectedFoodType from './selectedFoodType'
 import useFoodsListStore from '../../stores/FoodsListStore'
+const ToggleButton = defineAsyncComponent(() => import('./ToggleButton.vue'))
 
 const { getFoodsList } = useFoodsListStore()
 const loaded = ref(false)
@@ -23,12 +24,9 @@ const onFilter = () => {
         loaded.value = true
     }, 2000)
 }
-watch(
-    () => selectedFood.value,
-    newValue => {
-        getFoodsList(`category`, newValue.value)
-    }
-)
+const onToggleBtns = (selectedBtn: SelectedFoodType) => {
+    getFoodsList(`category`, selectedBtn.value)
+}
 
 </script>
 
@@ -40,15 +38,7 @@ watch(
                 append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="onFilter"></v-text-field>
         </v-col>
         <v-col cols="md-6" sm="4">
-            <v-btn-toggle elevation="1" rounded="xl" v-model="selectedFood" mandatory borderless
-                color="deep-purple-accent-3">
-                <v-btn :value="n" v-for="n in foods" :key="n">
-                    <span class="hidden-sm-and-down mr-2">{{ n.name }}</span>
-                    <v-icon :color="n.color" center>
-                        {{ n.icon }}
-                    </v-icon>
-                </v-btn>
-            </v-btn-toggle>
+            <ToggleButton :selectedFood="selectedFood" :foods="foods" @toggleBtns="onToggleBtns"></ToggleButton>
         </v-col>
     </v-row>
 </template>
