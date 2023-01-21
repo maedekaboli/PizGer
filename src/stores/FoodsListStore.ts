@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import FoodType from '../components/food/FoodType'
+import FoodType from '../components/food/models/FoodType'
 import FoodStateModel from './FoodStateModel'
 import axios from '../api'
 

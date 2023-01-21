@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import FoodType from './FoodType'
+import FoodType from './models/FoodType'
 import useFoodsListStore from '../../stores/FoodsListStore'
 const props = defineProps<{
     food: FoodType

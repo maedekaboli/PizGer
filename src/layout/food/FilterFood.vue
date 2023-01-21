@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, defineAsyncComponent } from 'vue'
-import SelectedFoodType from './selectedFoodType'
+import SelectedFoodType from './models/SelectedFoodType'
 import useFoodsListStore from '../../stores/FoodsListStore'
-const ToggleButton = defineAsyncComponent(() => import('./ToggleButton.vue'))
+const ToggleButton = defineAsyncComponent(() => import('../../components/ToggleButton.vue'))
 
 const { getFoodsList } = useFoodsListStore()
 const loaded = ref(false)

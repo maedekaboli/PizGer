@@ -1,7 +1,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import SelectedFoodType from './selectedFoodType'
+import SelectedFoodType from './models/SelectedFoodType'
 
 const props = defineProps<{
     selectedFood: SelectedFoodType,
