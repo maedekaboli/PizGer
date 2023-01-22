@@ -1,28 +1,46 @@
 {
-    "foods": [
-        {
-            "name": "hamburger",
-            "price": 42,
-            "desc": "delicious hamburger",
-            "id": 1,
-            "category": 2
-        },
-        {
-            "name": "pizza",
-            "price": 42,
-            "desc": "delicious pizza",
-            "id": 2,
-            "category": 1
-        }
-    ],
-    "comments": [
-        {
-            "id": 1,
-            "body": "some comment",
-            "postId": 1
-        }
-    ],
-    "profile": {
-        "name": "typicode"
+  "foods": [
+    {
+      "name": "hamburger",
+      "price": 42,
+      "desc": "delicious hamburger",
+      "id": 1,
+      "category": 2,
+      "ingredients": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "pizza",
+      "price": 42,
+      "desc": "delicious pizza",
+      "id": 2,
+      "category": 1,
+      "ingredients": [
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "ff",
+      "price": 0,
+      "desc": "",
+      "id": 3,
+      "category": 1,
+      "ingredients": []
     }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

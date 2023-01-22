@@ -1,30 +1,30 @@
 <script setup lang="ts">
-import { ref, defineAsyncComponent, reactive } from 'vue'
+import { ref, defineAsyncComponent, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import useFoodsListStore from '../../../stores/FoodsListStore'
 import { storeToRefs } from 'pinia'
 import SelectedFoodType from '../models/SelectedFoodType'
 import { foods, selectedFood } from './EditFoodButtons'
 
+const route = useRoute()
 const ToggleButton = defineAsyncComponent(() => import('../../../components/ToggleButton.vue'))
-const { loading } = storeToRefs(useFoodsListStore())
+const { addFood, getFood } = useFoodsListStore()
+const { loading, getFoodDetail } = storeToRefs(useFoodsListStore())
 const ingredients = ref<string[]>([
     'Tomato', 'Onion', 'Garlic', 'Cheese', 'Parsley ', 'Basil', 'Olive', 'Egg', 'Sauce'
-
 ])
-const food = reactive({
-    name: '',
-    desc: '',
-    price: null,
-    category: 1
-})
-const { addFood } = useFoodsListStore()
+
+if (route.params.id)
+    getFood(~~route.params.id)
+
 const onSubmit = () => {
-    addFood(food)
+    addFood(getFoodDetail.value)
 }
 const onToggleBtns = (selectedBtn: SelectedFoodType) => {
     selectedFood.value = selectedBtn
-    food.category = selectedFood.value.value
+    getFoodDetail.value.category = selectedFood.value.value
 }
+
 </script>
 
 
@@ -44,14 +44,14 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
                     </v-card-title>
                     <v-row>
                         <v-col cols="12" sm="6">
-                            <v-text-field v-model="food.name" label="name" variant="outlined"></v-text-field>
+                            <v-text-field v-model="getFoodDetail.name" label="name" variant="outlined"></v-text-field>
                         </v-col>
                         <v-col cols="12" sm="6">
-                            <v-text-field v-model="food.price" label="price" variant="outlined"></v-text-field>
+                            <v-text-field v-model="getFoodDetail.price" label="price" variant="outlined"></v-text-field>
                         </v-col>
                         <v-col cols="12">
-                            <v-textarea v-model="food.desc" label="description" auto-grow variant="outlined" rows="3"
-                                row-height="25" shaped></v-textarea>
+                            <v-textarea v-model="getFoodDetail.desc" label="description" auto-grow variant="outlined"
+                                rows="3" row-height="25" shaped></v-textarea>
                         </v-col>
                     </v-row>
                     <v-row>

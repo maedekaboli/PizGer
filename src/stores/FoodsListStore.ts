@@ -4,6 +4,12 @@ import FoodStateModel from './FoodStateModel'
 import axios from '../api'
 
 const actions = {
+    async getFood(id: number) {
+        await axios.get(`foods/${id}`).then(res => {
+            this.food = res?.data
+        }).catch(err => {
+        })
+    },
     async getFoodsList(queryName?: string, queryValue?: number | string) {
         this.loading = true
         let url: string;
@@ -16,16 +22,13 @@ const actions = {
             this.loading = false
         }).catch(err => {
             this.loading = false
-            // snackbar.value = true
-            // snackbarMsg.value = err
         })
     },
     async deleteFood(id: number) {
         await axios.delete(`foods/${id}`).then(res => {
             this.foodsList = this.foodsList.filter((f: FoodType) => f.id != id)
         }).catch(err => {
-            // snackbar.value = true
-            // snackbarMsg.value = err
+
         })
     },
     async addFood(params: any) {
@@ -35,14 +38,14 @@ const actions = {
             this.loading = false
         }).catch(err => {
             this.loading = false
-            // snackbar.value = true
-            // snackbarMsg.value = err
         })
     }
 }
 
 const getters = {
-    searchFoodsByName() { }
+    getFoodDetail() {
+        return this.food
+    },
 }
 
 const useFoodsListStore = defineStore({
@@ -50,6 +53,14 @@ const useFoodsListStore = defineStore({
     state: (): FoodStateModel => ({
         foodsList: [],
         query: '',
+        food: {
+            "name": "",
+            "price": 0,
+            "desc": "",
+            "id": 0,
+            "category": 0,
+            "ingredients": []
+        },
         loading: false
     }),
     actions,

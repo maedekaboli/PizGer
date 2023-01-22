@@ -5,4 +5,5 @@ export default interface FoodType {
     desc: string
     price: number
     category: number
+    ingredients: number[]
 }
