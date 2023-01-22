@@ -4,6 +4,12 @@ import FoodStateModel from './FoodStateModel'
 import axios from '../api'
 
 const actions = {
+    async editFood (food: FoodType) {
+        await axios.put(`foods/${food.id}`,food).then(res => {
+            console.log(res)
+        }).catch(err => {
+        })
+    },
     async getFood(id: number) {
         await axios.get(`foods/${id}`).then(res => {
             this.food = res?.data

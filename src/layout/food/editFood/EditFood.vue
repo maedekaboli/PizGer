@@ -8,17 +8,22 @@ import { foods, selectedFood } from './EditFoodButtons'
 
 const route = useRoute()
 const ToggleButton = defineAsyncComponent(() => import('../../../components/ToggleButton.vue'))
-const { addFood, getFood } = useFoodsListStore()
+const { addFood, getFood, editFood } = useFoodsListStore()
 const { loading, getFoodDetail } = storeToRefs(useFoodsListStore())
 const ingredients = ref<string[]>([
     'Tomato', 'Onion', 'Garlic', 'Cheese', 'Parsley ', 'Basil', 'Olive', 'Egg', 'Sauce'
 ])
+const btnName = ref('add')
 
-if (route.params.id)
+if (route.params.id) {
+    btnName.value = 'edit'
     getFood(~~route.params.id)
-
+}
 const onSubmit = () => {
-    addFood(getFoodDetail.value)
+    if (route.params.id)
+        editFood(getFoodDetail.value)
+    else
+        addFood(getFoodDetail.value)
 }
 const onToggleBtns = (selectedBtn: SelectedFoodType) => {
     selectedFood.value = selectedBtn
@@ -75,7 +80,7 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
 
         <v-btn @click="onSubmit" :loading="loading" :disabled="loading" rounded="pill" class="mt-5" size="large"
             color="info">
-            Edit {{ selectedFood.name }}
+            {{ btnName }} {{ selectedFood.name }}
         </v-btn>
         <router-link to="/">
             <v-btn rounded="pill" class="mt-5 ml-4" size="large" color="black" variant="outlined">
