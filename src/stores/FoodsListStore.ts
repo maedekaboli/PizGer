@@ -5,7 +5,7 @@ import axios from '../api'
 
 const actions = {
     async getFoodsList(queryName?: string, queryValue?: number | string) {
-        this.loading=true
+        this.loading = true
         let url: string;
         if (queryName && queryValue)
             url = `foods?${queryName}_like=${queryValue}`
@@ -13,9 +13,9 @@ const actions = {
             url = 'foods'
         await axios.get(url).then(res => {
             this.foodsList = res?.data
-            this.loading=false
+            this.loading = false
         }).catch(err => {
-            this.loading=false
+            this.loading = false
             // snackbar.value = true
             // snackbarMsg.value = err
         })
@@ -29,12 +29,12 @@ const actions = {
         })
     },
     async addFood(params: any) {
-        this.loading=true
+        this.loading = true
         await axios.post(`foods`, params).then(res => {
             this.foodsList.unshift(res?.data)
-            this.loading=false
+            this.loading = false
         }).catch(err => {
-            this.loading=false
+            this.loading = false
             // snackbar.value = true
             // snackbarMsg.value = err
         })

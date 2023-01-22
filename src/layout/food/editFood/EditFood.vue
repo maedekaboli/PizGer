@@ -1,35 +1,26 @@
 <script setup lang="ts">
 import { ref, defineAsyncComponent, reactive } from 'vue'
-import useFoodsListStore from '../../stores/FoodsListStore'
+import useFoodsListStore from '../../../stores/FoodsListStore'
 import { storeToRefs } from 'pinia'
-import SelectedFoodType from './models/SelectedFoodType'
-const ToggleButton = defineAsyncComponent(() => import('../../components/ToggleButton.vue'))
+import SelectedFoodType from '../models/SelectedFoodType'
+import { foods, selectedFood } from './EditFoodButtons'
 
-
+const ToggleButton = defineAsyncComponent(() => import('../../../components/ToggleButton.vue'))
 const { loading } = storeToRefs(useFoodsListStore())
-
 const ingredients = ref<string[]>([
     'Tomato', 'Onion', 'Garlic', 'Cheese', 'Parsley ', 'Basil', 'Olive', 'Egg', 'Sauce'
 
 ])
-const foods = ref<SelectedFoodType[]>([
-    { value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red', iconSize: '30px' },
-    { value: 2, name: 'Burger', icon: 'mdi-hamburger', color: '#FFAB00', iconSize: '30px' }
-])
-let selectedFood = ref<SelectedFoodType>({ value: 1, name: 'Pizza', icon: 'mdi-pizza', color: 'red', showName: false })
-
 const food = reactive({
     name: '',
     desc: '',
     price: null,
     category: 1
 })
-
 const { addFood } = useFoodsListStore()
 const onSubmit = () => {
     addFood(food)
 }
-
 const onToggleBtns = (selectedBtn: SelectedFoodType) => {
     selectedFood.value = selectedBtn
     food.category = selectedFood.value.value

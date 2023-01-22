@@ -5,7 +5,7 @@ import { storeToRefs } from 'pinia'
 
 const Food = defineAsyncComponent(() => import('./Food.vue'))
 const NoFood = defineAsyncComponent(() => import('./NoFood.vue'))
-const FilterFood = defineAsyncComponent(() => import('./FilterFood.vue'))
+const FilterFood = defineAsyncComponent(() => import('./filterFood/FilterFood.vue'))
 const GettingFoodLoading = defineAsyncComponent(() => import('./GettingFoodLoading.vue'))
 
 const { foodsList, loading } = storeToRefs(useFoodsListStore())
