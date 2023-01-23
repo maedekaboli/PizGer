@@ -7,7 +7,7 @@ import SelectedFoodType from '../models/SelectedFoodType'
 import { foods, selectedFood } from './EditFoodButtons'
 
 const route = useRoute()
-const ToggleButton = defineAsyncComponent(() => import('../../../components/ToggleButton.vue'))
+const AppToggleButton = defineAsyncComponent(() => import('../../../components/AppToggleButton.vue'))
 const { addFood, getFood, editFood } = useFoodsListStore()
 const { loading, getFoodDetail } = storeToRefs(useFoodsListStore())
 const ingredients = ref<string[]>([
@@ -36,7 +36,7 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
 <template>
     <v-row>
         <v-col cols="12" md="2">
-            <ToggleButton :selectedFood="selectedFood" :foods="foods" @toggleBtns="onToggleBtns"></ToggleButton>
+            <AppToggleButton :selectedFood="selectedFood" :foods="foods" @toggleBtns="onToggleBtns"></AppToggleButton>
         </v-col>
     </v-row>
 

@@ -4,7 +4,7 @@ import { foods, selectedFood } from './FilterFoodButtons'
 import SelectedFoodType from '../models/SelectedFoodType'
 import useFoodsListStore from '../../../stores/FoodsListStore'
 
-const ToggleButton = defineAsyncComponent(() => import('../../../components/ToggleButton.vue'))
+const AppToggleButton = defineAsyncComponent(() => import('../../../components/AppToggleButton.vue'))
 const { getFoodsList } = useFoodsListStore()
 const loaded = ref(false)
 const loading = ref(false)
@@ -34,7 +34,7 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
                 append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="onFilter"></v-text-field>
         </v-col>
         <v-col cols="md-6" sm="4">
-            <ToggleButton :selectedFood="selectedFood" :foods="foods" @toggleBtns="onToggleBtns"></ToggleButton>
+            <AppToggleButton :selectedFood="selectedFood" :foods="foods" @toggleBtns="onToggleBtns"></AppToggleButton>
         </v-col>
     </v-row>
 </template>

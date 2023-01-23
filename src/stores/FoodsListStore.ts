@@ -2,11 +2,11 @@ import { defineStore } from 'pinia'
 import FoodType from '../layout/food/models/FoodType'
 import FoodStateModel from './FoodStateModel'
 import axios from '../api'
+import router from '../routes'
 
 const actions = {
-    async editFood (food: FoodType) {
-        await axios.put(`foods/${food.id}`,food).then(res => {
-            console.log(res)
+    async editFood(food: FoodType) {
+        await axios.put(`foods/${food.id}`, food).then(res => {
         }).catch(err => {
         })
     },
@@ -14,6 +14,9 @@ const actions = {
         await axios.get(`foods/${id}`).then(res => {
             this.food = res?.data
         }).catch(err => {
+            if (err.response.status === 404) {
+                router.push({ name: 'NotFound' })
+            }
         })
     },
     async getFoodsList(queryName?: string, queryValue?: number | string) {

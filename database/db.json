@@ -13,22 +13,18 @@
       ]
     },
     {
-      "name": "pizza",
-      "price": 42,
-      "desc": "delicious pizza",
-      "id": 2,
-      "category": 1,
-      "ingredients": [
-        3,
-        4,
-        5
-      ]
-    },
-    {
       "name": "ff",
       "price": 0,
       "desc": "",
       "id": 3,
+      "category": 1,
+      "ingredients": []
+    },
+    {
+      "name": "lsdjk",
+      "price": 0,
+      "desc": "",
+      "id": 4,
       "category": 1,
       "ingredients": []
     }
