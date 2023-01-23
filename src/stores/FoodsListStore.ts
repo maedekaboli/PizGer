@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import FoodType from '../layout/food/models/FoodType'
+import FoodType from '../views/food/models/FoodType'
 import FoodStateModel from './FoodStateModel'
 import axios from '../api'
 import router from '../routes'
