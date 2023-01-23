@@ -1,4 +1,4 @@
-import FoodType from '../layout/food/models/FoodType';
+import FoodType from '../views/food/models/FoodType';
 
 export default interface FoodStateModel {
     foodsList: FoodType[]
