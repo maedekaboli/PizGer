@@ -1,5 +1,5 @@
 <script setup>
-import TheApp from './views/layout/TheApp.vue'
+import TheApp from '@/views/layout/TheApp.vue'
 </script>
 
 <template>

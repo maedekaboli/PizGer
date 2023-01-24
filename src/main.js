@@ -1,9 +1,9 @@
 import { createApp } from 'vue'
-import App from './App.vue'
-import './assets/main.css'
+import App from '@/App.vue'
+import '@/assets/main.css'
 
 //router
-import router from './routes'
+import router from '@/routes'
 
 //Pinia
 import { createPinia } from 'pinia'
