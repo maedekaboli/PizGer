@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineAsyncComponent, onMounted } from 'vue'
+import { ref, defineAsyncComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import useFoodsListStore from '../../../stores/FoodsListStore'
 import { storeToRefs } from 'pinia'
@@ -8,11 +8,10 @@ import { foods, selectedFood } from './EditFoodButtons'
 
 const route = useRoute()
 const AppToggleButton = defineAsyncComponent(() => import('../../../components/AppToggleButton.vue'))
+const Ingredient = defineAsyncComponent(() => import('../ingredients/Ingredient.vue'))
 const { addFood, getFood, editFood } = useFoodsListStore()
 const { loading, getFoodDetail } = storeToRefs(useFoodsListStore())
-const ingredients = ref<string[]>([
-    'Tomato', 'Onion', 'Garlic', 'Cheese', 'Parsley ', 'Basil', 'Olive', 'Egg', 'Sauce'
-])
+const ingredients = ref([0, 1, 2, 3, 4, 5, 6, 7, 8])
 const btnName = ref('add')
 
 if (route.params.id) {
@@ -28,6 +27,10 @@ const onSubmit = () => {
 const onToggleBtns = (selectedBtn: SelectedFoodType) => {
     selectedFood.value = selectedBtn
     getFoodDetail.value.category = selectedFood.value.value
+}
+
+const selectedIngredient = (item: number) => {
+    getFoodDetail.value.ingredients.push(item)
 }
 
 </script>
@@ -60,10 +63,11 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
                         </v-col>
                     </v-row>
                     <v-row>
-                        <v-chip-group column multiple selected-class="text-success">
-                            <v-chip v-for="item in ingredients" :key="item" filter variant="outlined">
-                                {{ item }}
-                            </v-chip>
+                        <v-chip-group v-model="getFoodDetail.ingredients" selected-class="text-success"
+                            column multiple>
+                            <template v-for="item in ingredients" :key="item">
+                                <Ingredient :item="item" @selectedIngredient="selectedIngredient"></Ingredient>
+                            </template>
                         </v-chip-group>
                     </v-row>
                 </v-col>

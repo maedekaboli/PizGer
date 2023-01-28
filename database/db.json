@@ -5,11 +5,15 @@
       "price": 42,
       "desc": "delicious hamburger",
       "id": 1,
-      "category": 2,
+      "category": 1,
       "ingredients": [
         0,
         1,
-        2
+        2,
+        3,
+        6,
+        7,
+        8
       ]
     },
     {
