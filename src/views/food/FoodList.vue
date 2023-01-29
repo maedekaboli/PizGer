@@ -22,10 +22,10 @@ getFoodsList()
   <GettingFoodLoading v-if="loading" />
   <NoFood v-if="foodsList.length == 0 && !loading"></NoFood>
 
-  <div class="d-flex flex-row flex-wrap">
+  <v-row>
     <Food transition="slide-x-transition" v-for="food in foodsList" :key="food.id" :food="food">
     </Food>
-  </div>
+  </v-row>
   <v-snackbar v-model="snackbar" :timeout="5000" color="red accent-1" location="top">
     {{ snackbarMsg }}
   </v-snackbar>
