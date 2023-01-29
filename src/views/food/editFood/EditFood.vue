@@ -11,7 +11,7 @@ const AppToggleButton = defineAsyncComponent(() => import('../../../components/A
 const ResturantForm = defineAsyncComponent(() => import('./ResturantForm.vue'))
 const FoodForm = defineAsyncComponent(() => import('./FoodForm.vue'))
 const { addFood, getFood, editFood } = useFoodsListStore()
-const { loading, getFoodDetail } = storeToRefs(useFoodsListStore())
+const { loading,food } = storeToRefs(useFoodsListStore())
 const btnName = ref('add')
 
 if (route.params.id) {
@@ -20,13 +20,13 @@ if (route.params.id) {
 }
 const onSubmit = () => {
     if (route.params.id)
-        editFood(getFoodDetail.value)
+        editFood(food.value)
     else
-        addFood(getFoodDetail.value)
+        addFood(food.value)
 }
 const onToggleBtns = (selectedBtn: SelectedFoodType) => {
     selectedFood.value = selectedBtn
-    getFoodDetail.value.category = selectedFood.value.value
+    food.value.category = selectedFood.value.value
 }
 
 </script>
@@ -45,7 +45,7 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
                 <v-card-title class="pl-0 mb-8">
                     {{ selectedFood.name }}
                 </v-card-title>
-                <FoodForm :getFoodDetail="getFoodDetail"></FoodForm>
+                <FoodForm :getFoodDetail="food"></FoodForm>
             </v-col>
             <v-col cols="md-5" class="border-left resturant mb-3">
                 <ResturantForm></ResturantForm>
