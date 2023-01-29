@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, defineAsyncComponent } from 'vue'
-import useFoodsListStore from '../../stores/FoodsListStore'
+import useFoodsListStore from '../../stores/food/FoodsListStore'
 import { storeToRefs } from 'pinia'
 
 const Food = defineAsyncComponent(() => import('./Food.vue'))
