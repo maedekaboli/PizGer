@@ -5,6 +5,8 @@ import axios from '../../api'
 import router from '../../routes'
 
 const useFoodsListStore = defineStore('food', () => {
+    const modalLoading = ref(false)
+    const showModal = ref(false)
     const foodsList = ref<FoodType[]>([])
     const query = ref('')
     const food = ref<FoodType>({
@@ -12,7 +14,7 @@ const useFoodsListStore = defineStore('food', () => {
         "price": 0,
         "desc": "",
         "id": 0,
-        "category": 0,
+        "category": 1,
         "ingredients": []
     })
     const loading = ref(false)
@@ -51,10 +53,14 @@ const useFoodsListStore = defineStore('food', () => {
         })
     }
     const deleteFood = (id: number) => {
+        modalLoading.value = true
         axios.delete(`foods/${id}`).then(res => {
-            foodsList.value = foodsList.value.filter((f: FoodType) => f.id != id)
+            setTimeout(() => {
+                foodsList.value = foodsList.value.filter((f: FoodType) => f.id != id)
+                modalLoading.value = false
+            }, 2000)
         }).catch(err => {
-
+            modalLoading.value = false
         })
     }
     const addFood = (params: FoodType) => {
@@ -70,7 +76,7 @@ const useFoodsListStore = defineStore('food', () => {
         })
     }
 
-    return { foodsList, query, food, loading, addFood, deleteFood, getFoodsList, getFood, editFood }
+    return { foodsList, query, food, loading, modalLoading, showModal, addFood, deleteFood, getFoodsList, getFood, editFood }
 })
 
 export default useFoodsListStore

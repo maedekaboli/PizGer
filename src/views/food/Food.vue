@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, defineAsyncComponent, TransitionGroup } from "vue";
+import { storeToRefs } from 'pinia'
 import FoodType from "./models/FoodType";
 import useFoodsListStore from "../../stores/food/FoodsListStore";
 const DeleteModal = defineAsyncComponent(() => import("./DeleteModal.vue"));
@@ -9,11 +10,14 @@ const props = defineProps<{
 }>();
 
 const show = ref(false);
-const showModal = ref(false);
 const { deleteFood } = useFoodsListStore();
-const onDeleteFood = (id: number) => {
+const { loading, showModal } = storeToRefs(useFoodsListStore())
+
+const onShowDeleteModal = () => {
     showModal.value = true;
-    // deleteFood(id)
+}
+const onDeleteFood = () => {
+    deleteFood(props.food.id)
 };
 
 const foodImg = computed(() => {
@@ -52,9 +56,10 @@ const lazySrc = computed(() => {
                 <router-link :to="`/food/${food.id}`">
                     <v-btn color="blue" variant="outlined" size="x-small" icon="mdi-pencil-outline"></v-btn>
                 </router-link>
-                <v-btn @click="onDeleteFood(food.id)" color="red" class="ml-2" variant="outlined" size="x-small"
+                <v-btn @click="onShowDeleteModal" color="red" class="ml-2" variant="outlined" size="x-small"
                     icon="mdi-trash-can-outline"></v-btn>
-                <DeleteModal :showModal="showModal"> </DeleteModal>
+                <DeleteModal :persistent="true" @onAgree="onDeleteFood">
+                </DeleteModal>
                 <v-spacer></v-spacer>
 
                 <v-btn :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="show = !show"></v-btn>
