@@ -18,8 +18,13 @@ const useFoodsListStore = defineStore('food', () => {
     const loading = ref(false)
 
     const editFood = (food: FoodType) => {
+        loading.value = true
         axios.put(`foods/${food.id}`, food).then(res => {
+            setTimeout(() => {
+                loading.value = false
+            }, 2000)
         }).catch(err => {
+            loading.value = false
         })
     }
     const getFood = (id: number) => {
@@ -56,7 +61,10 @@ const useFoodsListStore = defineStore('food', () => {
         loading.value = true
         axios.post(`foods`, params).then(res => {
             foodsList.value.unshift(res?.data)
-            loading.value = false
+            setTimeout(() => {
+                loading.value = false
+                router.push({ name: 'Home' })
+            }, 2000)
         }).catch(err => {
             loading.value = false
         })

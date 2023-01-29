@@ -6,7 +6,7 @@ const NotFound = () => import('../views/NotFound.vue')
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', component: FoodsContainer },
+        { path: '/', name: 'Home', component: FoodsContainer },
         { path: '/food', component: EditFood },
         { path: '/food/:id', component: EditFood },
         { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },

@@ -11,7 +11,7 @@ const AppToggleButton = defineAsyncComponent(() => import('../../../components/A
 const ResturantForm = defineAsyncComponent(() => import('./ResturantForm.vue'))
 const FoodForm = defineAsyncComponent(() => import('./FoodForm.vue'))
 const { addFood, getFood, editFood } = useFoodsListStore()
-const { loading,food } = storeToRefs(useFoodsListStore())
+const { loading, food } = storeToRefs(useFoodsListStore())
 const btnName = ref('add')
 
 if (route.params.id) {
@@ -39,8 +39,9 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
         </v-col>
     </v-row>
 
-    <v-card class="px-6 py-10">
-        <v-row>
+    <v-card class="pb-10">
+        <v-progress-linear color="#6200ee" indeterminate v-if="loading"></v-progress-linear>
+        <v-row class="pt-10 px-6">
             <v-col cols="md-7" sm="12">
                 <v-card-title class="pl-0 mb-8">
                     {{ selectedFood.name }}
@@ -53,7 +54,7 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
         </v-row>
     </v-card>
 
-    <v-btn @click="onSubmit" :loading="loading" :disabled="loading" rounded="pill" class="mt-5" size="large"
+    <v-btn @click="onSubmit" :disabled="loading" rounded="pill" class="mt-5" size="large"
         color="info">
         {{ btnName }} {{ selectedFood.name }}
     </v-btn>
