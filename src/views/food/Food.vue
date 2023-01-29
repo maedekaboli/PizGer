@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, defineAsyncComponent, TransitionGroup } from "vue";
 import FoodType from "./models/FoodType";
-import useFoodsListStore from "../../stores/food/FoodsListStore";
+import useFoodsListStore from "../../stores/FoodsListStore";
 const DeleteModal = defineAsyncComponent(() => import("./DeleteModal.vue"));
 
 const props = defineProps<{
@@ -26,50 +26,53 @@ const lazySrc = computed(() => {
 </script>
 
 <template>
-    <v-col cols="md-4 Product" sm="6">
-        <v-card class="mx-auto">
-            <v-img :lazySrc="lazySrc" :src="foodImg" height="200px" cover>
-                <template v-slot:placeholder>
-                    <div class="d-flex align-end justify-center fill-height">
-                        <v-progress-linear color="#6200ee" indeterminate></v-progress-linear>
-                    </div>
-                </template>
-            </v-img>
-            <Transition name="fade">
+        <!-- <div v-if="show">helooooooo</div> -->
+
+        <v-col cols="md-4 Product" sm="6">
+          
+            <v-card class="mx-auto">
+                <v-img :lazySrc="lazySrc" :src="foodImg" height="200px" cover>
+                    <template v-slot:placeholder>
+                        <div class="d-flex align-end justify-center fill-height">
+                            <v-progress-linear color="#6200ee" indeterminate></v-progress-linear>
+                        </div>
+                    </template>
+                </v-img>
+                <Transition name="fade">
                 <v-card-title class="pb-0">
                     {{ food.name }}
                 </v-card-title>
-            </Transition>
-            <v-card-subtitle>
-                <v-icon> mdi-map-marker </v-icon>
-                {{ "food.brand" }}</v-card-subtitle>
-            <v-chip class="mx-2 mt-6" color="indigo">
-                <v-icon start icon="mdi-currency-usd"></v-icon>
-                {{ food.price }}
-            </v-chip>
+                </Transition>
+                <v-card-subtitle>
+                    <v-icon> mdi-map-marker </v-icon>
+                    {{ "food.brand" }}</v-card-subtitle>
+                <v-chip class="mx-2 mt-6" color="indigo">
+                    <v-icon start icon="mdi-currency-usd"></v-icon>
+                    {{ food.price }}
+                </v-chip>
 
-            <v-card-actions>
-                <router-link :to="`/food/${food.id}`">
-                    <v-btn color="blue" variant="outlined" size="x-small" icon="mdi-pencil-outline"></v-btn>
-                </router-link>
-                <v-btn @click="onDeleteFood(food.id)" color="red" class="ml-2" variant="outlined" size="x-small"
-                    icon="mdi-trash-can-outline"></v-btn>
-                <DeleteModal :showModal="showModal"> </DeleteModal>
-                <v-spacer></v-spacer>
+                <v-card-actions>
+                    <router-link :to="`/food/${food.id}`">
+                        <v-btn color="blue" variant="outlined" size="x-small" icon="mdi-pencil-outline"></v-btn>
+                    </router-link>
+                    <v-btn @click="onDeleteFood(food.id)" color="red" class="ml-2" variant="outlined" size="x-small"
+                        icon="mdi-trash-can-outline"></v-btn>
+                    <DeleteModal :showModal="showModal"> </DeleteModal>
+                    <v-spacer></v-spacer>
 
-                <v-btn :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="show = !show"></v-btn>
-            </v-card-actions>
+                    <v-btn :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="show = !show"></v-btn>
+                </v-card-actions>
 
-            <v-expand-transition>
-                <div v-show="show">
-                    <v-divider></v-divider>
-                    <v-card-text>
-                        {{ food.desc }}
-                    </v-card-text>
-                </div>
-            </v-expand-transition>
-        </v-card>
-    </v-col>
+                <v-expand-transition>
+                    <div v-show="show">
+                        <v-divider></v-divider>
+                        <v-card-text>
+                            {{ food.desc }}
+                        </v-card-text>
+                    </div>
+                </v-expand-transition>
+            </v-card>
+        </v-col>  
 </template>
 
 <style>

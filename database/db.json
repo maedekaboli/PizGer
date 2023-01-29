@@ -1,26 +1,46 @@
 {
   "foods": [
     {
-      "name": "hamburgersssssss",
+      "name": "hamburger",
       "price": 42,
       "desc": "delicious hamburger",
       "id": 1,
       "category": 1,
       "ingredients": [
+        0,
+        1,
         2,
         3,
-        5,
         6,
         7,
         8
       ]
+    },
+    {
+      "name": "ff",
+      "price": 0,
+      "desc": "",
+      "id": 3,
+      "category": 1,
+      "ingredients": []
+    },
+    {
+      "name": "lsdjk",
+      "price": 0,
+      "desc": "",
+      "id": 4,
+      "category": 1,
+      "ingredients": []
     }
   ],
-  "resturants": [
+  "comments": [
     {
-      "foodId": 1,
-      "name": "Akbar Mojalal",
-      "id": 1
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
     }
-  ]
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

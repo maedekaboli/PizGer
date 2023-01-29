@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
-import FoodType from '../../views/food/models/FoodType'
+import FoodType from '../views/food/models/FoodType'
 import FoodStateModel from './FoodStateModel'
-import axios from '../../api'
-import router from '../../routes'
+import axios from '../api'
+import router from '../routes'
 
 const actions = {
     async editFood(food: FoodType) {
