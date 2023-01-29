@@ -9,11 +9,11 @@ const props = defineProps<{
 }>();
 
 const show = ref(false);
-const { showModal, foodToDeleteId } = storeToRefs(useFoodsListStore())
+const { showModal, foodToDelete } = storeToRefs(useFoodsListStore())
 
 const onShowDeleteModal = () => {
     showModal.value = true;
-    foodToDeleteId.value = props.food.id
+    foodToDelete.value = props.food
 }
 
 const foodImg = computed(() => {

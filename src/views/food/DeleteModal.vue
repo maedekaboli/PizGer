@@ -24,9 +24,11 @@ const close = () => {
                     <v-progress-linear color="#6200ee" indeterminate v-if="modalLoading"></v-progress-linear>
                     <v-img src="/modalBg.jpg" class="align-end" gradient=" rgba(0,0,0,.5), rgba(0,0,0,.5)"
                         height="200px" cover>
-                        <v-sheet color="#ffffffd6">
+                        <v-sheet color="#ffffffd6"  height="200px">
                             <v-card-text>
-                                <div class="text-h5 pa-12">Hello world!</div>
+                                <div class="text-h6">
+                                    <slot name="text"></slot>
+                                </div>
                             </v-card-text>
                             <v-card-actions class="justify-end">
                                 <v-btn :disabled="modalLoading" color="primary" variant="flat" rounded="pill"

@@ -8,7 +8,7 @@ const NoFood = defineAsyncComponent(() => import('./NoFood.vue'))
 const FilterFood = defineAsyncComponent(() => import('./filterFood/FilterFood.vue'))
 const GettingFoodLoading = defineAsyncComponent(() => import('./GettingFoodLoading.vue'))
 const DeleteModal = defineAsyncComponent(() => import('./DeleteModal.vue'))
-const { foodsList, loading } = storeToRefs(useFoodsListStore())
+const { foodsList, loading ,foodToDelete} = storeToRefs(useFoodsListStore())
 const { getFoodsList } = useFoodsListStore()
 const snackbar = ref(false)
 const snackbarMsg = ref(null)
@@ -30,6 +30,9 @@ const onDeleteFood = () => {
     </Food>
   </v-row>
   <DeleteModal :persistent="true" @onAgree="onDeleteFood">
+    <template #text>
+      Do you want to delete "{{ foodToDelete.name }}" ?
+    </template>
   </DeleteModal>
   <v-snackbar v-model="snackbar" :timeout="5000" color="red accent-1" location="top">
     {{ snackbarMsg }}

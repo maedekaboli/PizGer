@@ -7,7 +7,6 @@ import router from '../../routes'
 const useFoodsListStore = defineStore('food', () => {
     const modalLoading = ref(false)
     const showModal = ref(false)
-    const foodToDeleteId = ref(0)
     const foodsList = ref<FoodType[]>([])
     const query = ref('')
     const food = ref<FoodType>({
@@ -18,6 +17,7 @@ const useFoodsListStore = defineStore('food', () => {
         "category": 1,
         "ingredients": []
     })
+    const foodToDelete = ref<FoodType>(food.value)
     const loading = ref(false)
 
     const editFood = (food: FoodType) => {
@@ -55,9 +55,9 @@ const useFoodsListStore = defineStore('food', () => {
     }
     const deleteFood = () => {
         modalLoading.value = true
-        axios.delete(`foods/${foodToDeleteId.value}`).then(res => {
+        axios.delete(`foods/${foodToDelete.value.id}`).then(res => {
             setTimeout(() => {
-                foodsList.value = foodsList.value.filter((f: FoodType) => f.id != foodToDeleteId.value)
+                foodsList.value = foodsList.value.filter((f: FoodType) => f.id != foodToDelete.value.id)
                 modalLoading.value = false
                 showModal.value = false
             }, 2000)
@@ -78,7 +78,7 @@ const useFoodsListStore = defineStore('food', () => {
         })
     }
 
-    return { foodsList, query, food, loading, modalLoading, showModal, foodToDeleteId, addFood, deleteFood, getFoodsList, getFood, editFood }
+    return { foodsList, query, food, loading, modalLoading, showModal, foodToDelete, addFood, deleteFood, getFoodsList, getFood, editFood }
 })
 
 export default useFoodsListStore
