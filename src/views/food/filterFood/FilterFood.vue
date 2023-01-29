@@ -2,7 +2,7 @@
 import { ref, defineAsyncComponent } from 'vue'
 import { foods, selectedFood } from './FilterFoodButtons'
 import SelectedFoodType from '../models/SelectedFoodType'
-import useFoodsListStore from '../../../stores/FoodsListStore'
+import useFoodsListStore from '../../../stores/food/FoodsListStore'
 
 const AppToggleButton = defineAsyncComponent(() => import('../../../components/AppToggleButton.vue'))
 const { getFoodsList } = useFoodsListStore()
