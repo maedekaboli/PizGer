@@ -46,7 +46,7 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
                 <v-card-title class="pl-0 mb-8">
                     {{ selectedFood.name }}
                 </v-card-title>
-                <FoodForm :getFoodDetail="food"></FoodForm>
+                <FoodForm></FoodForm>
             </v-col>
             <v-col cols="md-5" class="border-left resturant mb-3">
                 <ResturantForm></ResturantForm>
