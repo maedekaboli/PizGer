@@ -1,24 +1,20 @@
 <script setup lang="ts">
-import { ref, computed, defineAsyncComponent, TransitionGroup } from "vue";
+import { ref, computed } from "vue";
 import { storeToRefs } from 'pinia'
 import FoodType from "./models/FoodType";
 import useFoodsListStore from "../../stores/food/FoodsListStore";
-const DeleteModal = defineAsyncComponent(() => import("./DeleteModal.vue"));
 
 const props = defineProps<{
     food: FoodType;
 }>();
 
 const show = ref(false);
-const { deleteFood } = useFoodsListStore();
-const { loading, showModal } = storeToRefs(useFoodsListStore())
+const { showModal, foodToDeleteId } = storeToRefs(useFoodsListStore())
 
 const onShowDeleteModal = () => {
     showModal.value = true;
+    foodToDeleteId.value = props.food.id
 }
-const onDeleteFood = () => {
-    deleteFood(props.food.id)
-};
 
 const foodImg = computed(() => {
     return `https://api.lorem.space/image/${props.food.category == 1 ? "pizza" : "burger"
@@ -58,8 +54,6 @@ const lazySrc = computed(() => {
                 </router-link>
                 <v-btn @click="onShowDeleteModal" color="red" class="ml-2" variant="outlined" size="x-small"
                     icon="mdi-trash-can-outline"></v-btn>
-                <DeleteModal :persistent="true" @onAgree="onDeleteFood">
-                </DeleteModal>
                 <v-spacer></v-spacer>
 
                 <v-btn :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="show = !show"></v-btn>
