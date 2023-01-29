@@ -3,10 +3,9 @@
   font-weight: normal;
 }
 
-.v-card {
-  border-radius: 16px !important;
+.v-application {
+  background-color: #edeff3 !important;
 }
-
 
 a {
   text-decoration: none;

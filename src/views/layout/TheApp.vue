@@ -13,11 +13,3 @@ import TheNavbar from './TheNavbar.vue'
         </v-main>
     </v-app>
 </template>
-
-
-<style scoped>
-.v-application {
-  background-color: #edeff3 !important;
-}
-</style>
-

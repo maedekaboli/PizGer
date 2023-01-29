@@ -7,6 +7,11 @@ import '@mdi/font/css/materialdesignicons.css'
 const vuetify = createVuetify({
     components,
     directives,
+    defaults: {
+        VCard: {
+            rounded: 'xl',
+        }
+    },
     icons: {
         defaultSet: 'mdi',
     },
