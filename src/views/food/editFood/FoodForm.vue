@@ -2,10 +2,13 @@
 import { ref, defineAsyncComponent } from 'vue'
 import { storeToRefs } from 'pinia'
 import useFoodsListStore from '../../../stores/food/FoodsListStore'
+import IngridentsEnum from '../ingredients/IngridentsEnum'
 
 const { food } = storeToRefs(useFoodsListStore())
 const Ingredient = defineAsyncComponent(() => import('../ingredients/Ingredient.vue'))
-const ingredients = ref([0, 1, 2, 3, 4, 5, 6, 7, 8])
+const ingridentsEnumLength=Object.values(IngridentsEnum).length
+const ingredients = ref(Object.values(IngridentsEnum).slice(ingridentsEnumLength/2,ingridentsEnumLength))
+
 </script>
 
 <template>
@@ -25,7 +28,7 @@ const ingredients = ref([0, 1, 2, 3, 4, 5, 6, 7, 8])
         <v-col cols="12">
             <v-chip-group v-model="food.ingredients" selected-class="text-success" column multiple>
                 <template v-for="item in ingredients" :key="item">
-                    <Ingredient :item="item"></Ingredient>
+                    <Ingredient :item="item.toString()"></Ingredient>
                 </template>
             </v-chip-group>
         </v-col>

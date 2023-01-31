@@ -2,7 +2,7 @@
 import IngridentsEnum from './IngridentsEnum'
 
 defineProps<{
-    item: number;
+    item: string;
 }>();
 </script>
 
