@@ -47,8 +47,10 @@ const useFoodsListStore = defineStore('food', () => {
         else
             url = 'foods'
         axios.get(url).then(res => {
-            foodsList.value = res?.data
-            loading.value = false
+            setTimeout(() => {
+                foodsList.value = res?.data
+                loading.value = false
+            }, 2000)
         }).catch(err => {
             loading.value = false
         })
