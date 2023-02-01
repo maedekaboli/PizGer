@@ -5,6 +5,8 @@ import useFoodsListStore from '../../../stores/food/FoodsListStore'
 import { storeToRefs } from 'pinia'
 import SelectedFoodType from '../models/SelectedFoodType'
 import { foods, selectedFood } from './EditFoodButtons'
+import * as yup from 'yup';
+import { Form } from 'vee-validate'
 
 const route = useRoute()
 const AppToggleButton = defineAsyncComponent(() => import('../../../components/AppToggleButton.vue'))
@@ -13,12 +15,17 @@ const FoodForm = defineAsyncComponent(() => import('./FoodForm.vue'))
 const { addFood, getFood, editFood } = useFoodsListStore()
 const { loading, food } = storeToRefs(useFoodsListStore())
 const btnName = ref('add')
+const schema = yup.object({
+    name: yup.string().required().label('Name'),
+    price: yup.string().required().label('Price'),
+});
 
 if (route.params.id) {
     btnName.value = 'edit'
     getFood(~~route.params.id)
 }
-const onSubmit = () => {
+const onSubmit = (values) => {
+    console.log(values)
     if (route.params.id)
         editFood(food.value)
     else
@@ -38,31 +45,30 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
             <AppToggleButton :selectedFood="selectedFood" :foods="foods" @toggleBtns="onToggleBtns"></AppToggleButton>
         </v-col>
     </v-row>
-
-    <v-card class="pb-10">
-        <v-progress-linear color="#6200ee" indeterminate v-if="loading"></v-progress-linear>
-        <v-row class="pt-10 px-6">
-            <v-col cols="md-7" sm="12">
-                <v-card-title class="pl-0 mb-8">
-                    {{ selectedFood.name }}
-                </v-card-title>
-                <FoodForm></FoodForm>
-            </v-col>
-            <v-col cols="md-5" class="border-left resturant mb-3">
-                <ResturantForm></ResturantForm>
-            </v-col>
-        </v-row>
-    </v-card>
-
-    <v-btn @click="onSubmit" :disabled="loading" rounded="pill" class="mt-5" size="large"
-        color="info">
-        {{ btnName }} {{ selectedFood.name }}
-    </v-btn>
-    <router-link to="/">
-        <v-btn rounded="pill" class="mt-5 ml-4" size="large" color="black" variant="outlined">
-            back
+    <Form as="v-form" :validation-schema="schema" @submit="onSubmit">
+        <v-card class="pb-10">
+            <v-progress-linear color="#6200ee" indeterminate v-if="loading"></v-progress-linear>
+            <v-row class="pt-10 px-6">
+                <v-col cols="md-7" sm="12">
+                    <v-card-title class="pl-0 mb-8">
+                        {{ selectedFood.name }}
+                    </v-card-title>
+                    <FoodForm></FoodForm>
+                </v-col>
+                <v-col cols="md-5" class="border-left resturant mb-3">
+                    <ResturantForm></ResturantForm>
+                </v-col>
+            </v-row>
+        </v-card>
+        <v-btn type="submit" :disabled="loading" rounded="pill" class="mt-5" size="large" color="info">
+            {{ btnName }} {{ selectedFood.name }}
         </v-btn>
-    </router-link>
+        <router-link to="/">
+            <v-btn rounded="pill" class="mt-5 ml-4" size="large" color="black" variant="outlined">
+                back
+            </v-btn>
+        </router-link>
+    </Form>
 </template>
 
 <style>
