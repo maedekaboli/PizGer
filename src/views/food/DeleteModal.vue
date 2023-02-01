@@ -18,8 +18,6 @@ const close = () => {
 
 <template>
     <v-dialog :persistent="persistent" v-model="showModal" transition="dialog-bottom-transition" maxWidth="500px">
-        <!-- <v-row justify="center"> -->
-        <!-- <v-col cols="md-5"> -->
         <v-card class="bg-img" height="200px">
             <v-sheet height="200px" class="d-flex flex-wrap" color="#ffffffd6">
                 <v-progress-linear color="#6200ee" indeterminate v-if="modalLoading"></v-progress-linear>
@@ -36,17 +34,10 @@ const close = () => {
                 </v-card-actions>
             </v-sheet>
         </v-card>
-        <!-- </v-col> -->
-        <!-- </v-row> -->
     </v-dialog>
 </template>
 
 <style scoped>
-.v-sheet {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .bg-img {
     background-image: url('/modalBg.jpg');
     background-position: center;

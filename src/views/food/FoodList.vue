@@ -8,7 +8,7 @@ const NoFood = defineAsyncComponent(() => import('./NoFood.vue'))
 const FilterFood = defineAsyncComponent(() => import('./filterFood/FilterFood.vue'))
 const GettingFoodLoading = defineAsyncComponent(() => import('./GettingFoodLoading.vue'))
 const DeleteModal = defineAsyncComponent(() => import('./DeleteModal.vue'))
-const { foodsList, loading ,foodToDelete} = storeToRefs(useFoodsListStore())
+const { foodsList, loading, foodToDelete } = storeToRefs(useFoodsListStore())
 const { getFoodsList } = useFoodsListStore()
 const snackbar = ref(false)
 const snackbarMsg = ref(null)
@@ -25,7 +25,7 @@ const onDeleteFood = () => {
   <GettingFoodLoading v-if="loading" />
   <NoFood v-if="foodsList.length == 0 && !loading"></NoFood>
 
-  <v-row>
+  <v-row v-if="!loading">
     <Food transition="slide-x-transition" v-for="food in foodsList" :key="food.id" :food="food">
     </Food>
   </v-row>
