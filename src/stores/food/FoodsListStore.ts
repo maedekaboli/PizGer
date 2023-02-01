@@ -50,7 +50,7 @@ const useFoodsListStore = defineStore('food', () => {
             setTimeout(() => {
                 foodsList.value = res?.data
                 loading.value = false
-            }, 2000)
+            }, 1000)
         }).catch(err => {
             loading.value = false
         })
