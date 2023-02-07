@@ -10,3 +10,7 @@
 a {
   text-decoration: none;
 }
+
+.v-text-field .v-input__details {
+  padding-inline-start: 0;
+}
