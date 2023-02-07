@@ -18,8 +18,10 @@ const btnName = ref('add')
 const schema = yup.object({
     name: yup.string().required().label('Name'),
     price: yup.number().required().positive().typeError('Price must be a number').label('Price'),
-    resturantName: yup.string().required().label('Name'),
-    resturantAddress: yup.string().required().label('Address')
+    resturant: yup.object({
+        name: yup.string().required().label('Name'),
+        address: yup.string().required().label('Address')
+    })
 });
 
 if (route.params.id) {
