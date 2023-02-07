@@ -6,16 +6,16 @@ import TheSidebar from './TheSidebar.vue'
 
 <template>
     <v-app>
+        <TheNavbar></TheNavbar>
         <v-main>
-            <TheNavbar></TheNavbar>
             <v-container class="my-10">
                 <v-row align="center" justify="center">
                     <v-col cols="10">
-                    <RouterView></RouterView>
+                        <RouterView></RouterView>
                     </v-col>
                 </v-row>
             </v-container>
-            <TheSidebar></TheSidebar>
         </v-main>
+        <TheSidebar></TheSidebar>
     </v-app>
 </template>

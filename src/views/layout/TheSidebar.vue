@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer class="bg-deep-purple">
+    <v-navigation-drawer border="0" class="bg-deep-purple">
         <v-list class="pt-8 pr-0" density="compact" nav>
             <RouterLink to="/" exact>
                 <div class="fancy-sidebar-item mb-9">
@@ -21,8 +21,6 @@
 
 <style lang="scss">
 .v-navigation-drawer {
-    border: none !important;
-
     .router-link-active {
         .fancy-sidebar-item {
             position: relative;
