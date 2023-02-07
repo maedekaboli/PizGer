@@ -15,19 +15,19 @@ const ingredients = ref(Object.values(IngridentsEnum).slice(ingridentsEnumLength
     <v-row>
         <v-col cols="12" sm="6">
             <Field name="name" v-model="food.name" v-slot="{ field, errors }">
-                <v-text-field v-bind="field" v-model="food.name" label="name" variant="outlined"
+                <v-text-field v-bind="field" v-model.trim="food.name" label="name" variant="outlined"
                     :error-messages="errors"></v-text-field>
             </Field>
         </v-col>
         <v-col cols="12" sm="6">
             <Field name="price" v-model="food.price" v-slot="{ field, errors }">
-                <v-text-field v-bind="field" v-model="food.price" label="price" variant="outlined"
-                    :error-messages="errors"></v-text-field>
+                <v-text-field v-bind="field" append-inner-icon="mdi-currency-usd" v-model.number="food.price"
+                    label="price" variant="outlined" :error-messages="errors"></v-text-field>
             </Field>
         </v-col>
         <v-col cols="12">
-            <v-textarea v-model="food.desc" label="description" auto-grow variant="outlined" rows="3" row-height="25"
-                shaped></v-textarea>
+            <v-textarea v-model.trim="food.desc" label="description" auto-grow variant="outlined" rows="3"
+                row-height="25" shaped></v-textarea>
         </v-col>
     </v-row>
     <v-row>

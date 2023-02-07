@@ -17,7 +17,7 @@ const { loading, food } = storeToRefs(useFoodsListStore())
 const btnName = ref('add')
 const schema = yup.object({
     name: yup.string().required().label('Name'),
-    price: yup.string().required().label('Price'),
+    price: yup.number().required().positive().typeError('Price must be a number').label('Price'),
 });
 
 if (route.params.id) {
@@ -60,7 +60,7 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
                 </v-col>
             </v-row>
         </v-card>
-        <v-btn type="submit" :disabled="loading" rounded="pill" class="mt-5" size="large" color="info">
+        <v-btn type="submit" :disabled="loading" rounded="pill" class="mt-5" size="large" color="primary">
             {{ btnName }} {{ selectedFood.name }}
         </v-btn>
         <router-link to="/">
