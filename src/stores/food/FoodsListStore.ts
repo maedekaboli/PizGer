@@ -24,6 +24,20 @@ const useFoodsListStore = defineStore('food', () => {
     const foodToDelete = ref<FoodType>(food.value)
     const loading = ref(false)
 
+    const resetFood = () => {
+        food.value = {
+            "name": "",
+            "price": 0,
+            "desc": "",
+            "id": 0,
+            "category": 1,
+            "ingredients": [],
+            "resturant": {
+                "name": '',
+                "address": ''
+            }
+        }
+    }
     const editFood = (food: FoodType) => {
         loading.value = true
         axios.put(`foods/${food.id}`, food).then(res => {
@@ -84,7 +98,7 @@ const useFoodsListStore = defineStore('food', () => {
         })
     }
 
-    return { foodsList, query, food, loading, modalLoading, showModal, foodToDelete, addFood, deleteFood, getFoodsList, getFood, editFood }
+    return { foodsList, query, food, loading, modalLoading, showModal, foodToDelete,resetFood, addFood, deleteFood, getFoodsList, getFood, editFood }
 })
 
 export default useFoodsListStore

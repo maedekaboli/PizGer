@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, defineAsyncComponent } from 'vue'
+import { onBeforeRouteLeave } from 'vue-router'
 import { useRoute } from 'vue-router'
 import useFoodsListStore from '../../../stores/food/FoodsListStore'
 import { storeToRefs } from 'pinia'
@@ -12,7 +13,7 @@ const route = useRoute()
 const AppToggleButton = defineAsyncComponent(() => import('../../../components/AppToggleButton.vue'))
 const ResturantForm = defineAsyncComponent(() => import('./ResturantForm.vue'))
 const FoodForm = defineAsyncComponent(() => import('./FoodForm.vue'))
-const { addFood, getFood, editFood } = useFoodsListStore()
+const { addFood, getFood, editFood, resetFood } = useFoodsListStore()
 const { loading, food } = storeToRefs(useFoodsListStore())
 const btnName = ref('add')
 const schema = yup.object({
@@ -24,10 +25,18 @@ const schema = yup.object({
     })
 });
 
+onBeforeRouteLeave((to) => {
+    if (to.path == '/food') {
+        resetFood()
+        btnName.value = 'add'
+    }
+})
+
 if (route.params.id) {
     btnName.value = 'edit'
     getFood(~~route.params.id)
 }
+
 const onSubmit = (values) => {
     console.log(values)
     if (route.params.id)
