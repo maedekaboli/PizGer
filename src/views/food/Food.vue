@@ -27,7 +27,7 @@ const lazySrc = computed(() => {
 
 <template>
     <v-col cols="md-4 Product" sm="6">
-        <v-card class="mx-auto">
+        <v-card class="mx-auto" min-height="375px">
             <v-img :lazySrc="lazySrc" :src="foodImg" height="200px" cover>
                 <template v-slot:placeholder>
                     <div class="d-flex align-end justify-center fill-height">
