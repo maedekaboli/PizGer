@@ -1,6 +1,26 @@
+<script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import useFoodsListStore from '../../../stores/food/FoodsListStore'
+import { Field } from 'vee-validate'
+
+const { food } = storeToRefs(useFoodsListStore())
+</script>
+
+
 <template>
-    <v-card-title class="pl-0 mb-8">
+    <v-card-title class="pl-3 mb-5">
         Resturant
     </v-card-title>
-    <v-text-field model-value="John Doe" label="name" variant="outlined"></v-text-field>
+    <v-col cols="12">
+        <Field name="resturantName" v-model="food.resturant.name" v-slot="{ field, errors }">
+            <v-text-field v-model.trim="food.resturant.name" label="name" variant="outlined" v-bind="field"
+                :error-messages="errors"></v-text-field>
+        </Field>
+    </v-col>
+    <v-col cols="12">
+        <Field name="resturantAddress" v-model="food.resturant.address" v-slot="{ field, errors }">
+            <v-textarea v-model.trim="food.resturant.address" label="address" auto-grow variant="outlined" rows="3"
+                row-height="25" shaped v-bind="field" :error-messages="errors"></v-textarea>
+        </Field>
+    </v-col>
 </template>

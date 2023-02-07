@@ -15,7 +15,11 @@ const useFoodsListStore = defineStore('food', () => {
         "desc": "",
         "id": 0,
         "category": 1,
-        "ingredients": []
+        "ingredients": [],
+        "resturant": {
+            "name": '',
+            "address": ''
+        }
     })
     const foodToDelete = ref<FoodType>(food.value)
     const loading = ref(false)

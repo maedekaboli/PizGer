@@ -6,4 +6,8 @@ export default interface FoodType {
     price: number
     category: number
     ingredients: number[]
+    resturant: {
+        name: string
+        address: string
+    }
 }

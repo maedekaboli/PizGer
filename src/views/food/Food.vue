@@ -42,7 +42,7 @@ const lazySrc = computed(() => {
             </Transition>
             <v-card-subtitle>
                 <v-icon> mdi-map-marker </v-icon>
-                {{ "food.brand" }}</v-card-subtitle>
+                {{ food.resturant.address }}</v-card-subtitle>
             <v-chip class="mx-2 mt-6" color="indigo">
                 <v-icon start icon="mdi-currency-usd"></v-icon>
                 {{ food.price }}
@@ -56,7 +56,8 @@ const lazySrc = computed(() => {
                     icon="mdi-trash-can-outline"></v-btn>
                 <v-spacer></v-spacer>
 
-                <v-btn v-if="food.desc" :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="show = !show"></v-btn>
+                <v-btn v-if="food.desc" :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+                    @click="show = !show"></v-btn>
             </v-card-actions>
 
             <v-expand-transition>
