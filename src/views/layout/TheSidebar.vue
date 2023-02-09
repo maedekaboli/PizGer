@@ -1,7 +1,10 @@
+<script setup lang="ts">
+</script>
+
 <template>
-    <v-navigation-drawer border="0" class="bg-deep-purple">
+    <v-navigation-drawer absolute floating width="200" class="bg-deep-purple">
         <v-list class="pt-8 pr-0" density="compact" nav>
-            <RouterLink to="/" exact>
+            <RouterLink to="/">
                 <div class="fancy-sidebar-item mb-9">
                     <b></b>
                     <b></b>
@@ -21,65 +24,92 @@
 
 <style lang="scss">
 .v-navigation-drawer {
-    .router-link-active {
-        .fancy-sidebar-item {
-            position: relative;
+    .v-navigation-drawer__content {
+        position: sticky;
+        top: 0;
+        height: 100vh;
 
+        .v-list {
             .v-list-item__overlay {
                 display: none;
             }
 
             .v-list-item {
+                background: none;
+
+            }
+
+            .v-list-item--rounded {
                 border-radius: 20px 0 0 20px;
             }
 
-            .v-list-item--active {
-                background-color: #edeff3 !important;
-            }
+        }
 
-            b {
-                &:nth-child(1) {
-                    position: absolute;
-                    top: -20px;
-                    height: 20px;
-                    width: 100%;
-                    background-color: #edeff3;
+        a:active {
+            color: inherit;
+        }
 
-                    &::before {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        border-bottom-right-radius: 20px;
-                        background-color: #673ab7;
+        .router-link-exact-active {
+            .fancy-sidebar-item {
+                position: relative;
 
-                    }
+
+                .v-list-item__overlay {
+                    display: none;
                 }
 
-                &:nth-child(2) {
-                    position: absolute;
-                    bottom: -20px;
-                    height: 20px;
-                    width: 100%;
-                    background-color: #edeff3;
+                .v-list-item {
+                    border-radius: 20px 0 0 20px;
+                    background: #edeff3;
+                }
 
-                    &::before {
-                        content: '';
+                .v-list-item--active {
+                    background-color: #edeff3 !important;
+                }
+
+                b {
+                    &:nth-child(1) {
                         position: absolute;
-                        top: 0;
-                        left: 0;
+                        top: -20px;
+                        height: 20px;
                         width: 100%;
-                        height: 100%;
-                        border-top-right-radius: 20px;
-                        background-color: #673ab7;
+                        background-color: #edeff3;
 
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            border-bottom-right-radius: 20px;
+                            background-color: #673ab7;
+
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        position: absolute;
+                        bottom: -20px;
+                        height: 20px;
+                        width: 100%;
+                        background-color: #edeff3;
+
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            border-top-right-radius: 20px;
+                            background-color: #673ab7;
+
+                        }
                     }
                 }
             }
         }
     }
-
 }
 </style>
