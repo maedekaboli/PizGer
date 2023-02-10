@@ -2,20 +2,27 @@
 </script>
 
 <template>
-    <v-navigation-drawer absolute floating width="200" class="bg-deep-purple">
+    <v-navigation-drawer absolute floating width="200" color="#3949AB">
         <v-list class="pt-8 pr-0" density="compact" nav>
             <RouterLink to="/">
                 <div class="fancy-sidebar-item mb-9">
                     <b></b>
                     <b></b>
-                    <v-list-item prepend-icon="mdi-home-city" title="Home" value="home"></v-list-item>
+                    <v-list-item prepend-icon="mdi-home" class="text-h6" title="Home" value="home"></v-list-item>
                 </div>
             </RouterLink>
             <RouterLink to="/404">
                 <div class="fancy-sidebar-item mb-9">
                     <b></b>
                     <b></b>
-                    <v-list-item prepend-icon="mdi-home-city" title="Home" value="home"></v-list-item>
+                    <v-list-item prepend-icon="mdi-plus-circle-outline" class="text-h6" title="Add PizGer" value="home"></v-list-item>
+                </div>
+            </RouterLink>
+            <RouterLink to="/chart">
+                <div class="fancy-sidebar-item mb-9">
+                    <b></b>
+                    <b></b>
+                    <v-list-item prepend-icon="mdi-chart-pie" class="text-h6" title="Statistics" value="home"></v-list-item>
                 </div>
             </RouterLink>
         </v-list>
@@ -36,7 +43,7 @@
 
             .v-list-item {
                 background: none;
-
+                color: white;
             }
 
             .v-list-item--rounded {
@@ -61,6 +68,7 @@
                 .v-list-item {
                     border-radius: 20px 0 0 20px;
                     background: #edeff3;
+                    color: #1a237e;
                 }
 
                 .v-list-item--active {
@@ -83,7 +91,7 @@
                             width: 100%;
                             height: 100%;
                             border-bottom-right-radius: 20px;
-                            background-color: #673ab7;
+                            background-color: #3949AB;
 
                         }
                     }
@@ -103,7 +111,7 @@
                             width: 100%;
                             height: 100%;
                             border-top-right-radius: 20px;
-                            background-color: #673ab7;
+                            background-color: #3949AB;
 
                         }
                     }
