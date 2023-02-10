@@ -1,28 +1,23 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import SidebarItemModel from './SidebarItemModel'
+
+const sidebarItems = ref<SidebarItemModel[]>([
+    { value: 0, title: 'Home', icon: 'home', path: '/' },
+    { value: 1, title: 'Add PizGer', icon: 'plus-circle-outline', path: '/food' },
+    { value: 2, title: 'Statistics', icon: 'chart-pie', path: '/chart' }
+])
 </script>
 
 <template>
     <v-navigation-drawer absolute floating width="200" color="#3949AB">
         <v-list class="pt-8 pr-0" density="compact" nav>
-            <RouterLink to="/">
+            <RouterLink v-for="item in sidebarItems" :key="item.value" :to="item.path">
                 <div class="fancy-sidebar-item mb-9">
                     <b></b>
                     <b></b>
-                    <v-list-item prepend-icon="mdi-home" class="text-h6" title="Home" value="home"></v-list-item>
-                </div>
-            </RouterLink>
-            <RouterLink to="/404">
-                <div class="fancy-sidebar-item mb-9">
-                    <b></b>
-                    <b></b>
-                    <v-list-item prepend-icon="mdi-plus-circle-outline" class="text-h6" title="Add PizGer" value="home"></v-list-item>
-                </div>
-            </RouterLink>
-            <RouterLink to="/chart">
-                <div class="fancy-sidebar-item mb-9">
-                    <b></b>
-                    <b></b>
-                    <v-list-item prepend-icon="mdi-chart-pie" class="text-h6" title="Statistics" value="home"></v-list-item>
+                    <v-list-item :prepend-icon="`mdi-${item.icon}`" class="text-h6" :title="item.title"
+                        :value="item.value"></v-list-item>
                 </div>
             </RouterLink>
         </v-list>
