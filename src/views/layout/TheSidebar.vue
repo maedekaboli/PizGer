@@ -5,7 +5,7 @@ import SidebarItemModel from './SidebarItemModel'
 const sidebarItems = ref<SidebarItemModel[]>([
     { value: 0, title: 'Home', icon: 'home', path: '/' },
     { value: 1, title: 'Add PizGer', icon: 'plus-circle-outline', path: '/food' },
-    { value: 2, title: 'Statistics', icon: 'chart-pie', path: '/chart' }
+    { value: 2, title: 'Statistics', icon: 'chart-pie', path: '/statistics' }
 ])
 </script>
 
