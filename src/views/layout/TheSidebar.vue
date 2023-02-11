@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import SidebarItemModel from './SidebarItemModel'
+import { useI18n } from "vue-i18n";
+const { t } = useI18n()
 
 const sidebarItems = ref<SidebarItemModel[]>([
-    { value: 0, title: 'Home', icon: 'home', path: '/' },
-    { value: 1, title: 'Add PizGer', icon: 'plus-circle-outline', path: '/food' },
-    { value: 2, title: 'Statistics', icon: 'chart-pie', path: '/statistics' }
+    { value: 0, title: t('sidebar.home'), icon: 'home', path: '/' },
+    { value: 1, title: t('sidebar.addPizger'), icon: 'plus-circle-outline', path: '/food' },
+    { value: 2, title: t('sidebar.statistics'), icon: 'chart-pie', path: '/statistics' }
 ])
 </script>
 

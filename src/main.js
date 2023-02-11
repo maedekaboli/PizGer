@@ -10,4 +10,7 @@ import router from '@/routes'
 import { createPinia } from 'pinia'
 const pinia = createPinia()
 
-createApp(App).use(pinia).use(vuetify).use(router).mount('#app')
+//i18n
+import i18n from './plugins/i18n'
+
+createApp(App).use(pinia).use(i18n).use(vuetify).use(router).mount('#app')

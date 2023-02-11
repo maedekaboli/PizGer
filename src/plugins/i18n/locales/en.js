@@ -5,7 +5,7 @@ export default {
     },
     sidebar: {
         home:'Home',
-        addPizger:'add PizGer',
-        statistics:'statistics'
+        addPizger:'Add PizGer',
+        statistics:'Statistics'
     }
 }

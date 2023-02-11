@@ -4,8 +4,8 @@ export default {
     addBtn: 'PizGer hinzufügen'
   },
   sidebar: {
-    home: 'heim',
-    addPizger: 'PizGer hinzufügen',
+    home: 'Heim',
+    addPizger: 'PizGer Hinzufügen',
     statistics: 'Statistiken'
   }
 }
