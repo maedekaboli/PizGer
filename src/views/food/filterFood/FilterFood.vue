@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, defineAsyncComponent } from 'vue'
 import { foods, selectedFood } from './FilterFoodButtons'
+import { ref, defineAsyncComponent } from 'vue'
 import SelectedFoodType from '../models/SelectedFoodType'
 import useFoodsListStore from '../../../stores/food/FoodsListStore'
 
@@ -29,11 +29,11 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
 
 <template>
     <v-row class="fill-height mb-10" align-content="center" justify="center">
-        <v-col cols="md-6" sm="8">
+        <v-col cols="md-6" sm="12">
             <v-text-field v-model="query" :loading="loading" density="compact" variant="solo" label="Search"
                 append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="onFilter"></v-text-field>
         </v-col>
-        <v-col cols="md-6" sm="4">
+        <v-col cols="md-6" sm="12">
             <AppToggleButton :selectedFood="selectedFood" :foods="foods" @toggleBtns="onToggleBtns"></AppToggleButton>
         </v-col>
     </v-row>
