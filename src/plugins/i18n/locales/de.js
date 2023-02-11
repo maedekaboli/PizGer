@@ -1,3 +1,11 @@
 export default {
-    close: 'c1',
+  navbar: {
+    welcome: 'Willkommen bei PizGer!',
+    addBtn: 'PizGer hinzufügen'
+  },
+  sidebar: {
+    home: 'heim',
+    addPizger: 'PizGer hinzufügen',
+    statistics: 'Statistiken'
   }
+}
