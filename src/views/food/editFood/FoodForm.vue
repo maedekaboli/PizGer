@@ -15,7 +15,7 @@ const ingredients = ref(Object.values(IngridentsEnum).slice(ingridentsEnumLength
     <v-row>
         <v-col cols="12" sm="6">
             <Field name="name" v-model="food.name" v-slot="{ field, errors }">
-                <v-text-field v-bind="field" v-model.trim="food.name" label="name" variant="outlined"
+                <v-text-field v-bind="field" v-model.trim="food.name" :label="$t('generals.name')" variant="outlined"
                     :error-messages="errors"></v-text-field>
             </Field>
         </v-col>

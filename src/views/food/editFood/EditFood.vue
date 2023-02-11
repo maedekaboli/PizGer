@@ -78,7 +78,7 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
         </v-btn>
         <router-link to="/">
             <v-btn rounded="pill" class="mt-5 ml-4" size="large" color="black" variant="outlined">
-                back
+                {{ $t('generals.back') }}
             </v-btn>
         </router-link>
     </Form>

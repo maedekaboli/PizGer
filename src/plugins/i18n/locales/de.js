@@ -2,7 +2,9 @@ export default {
   generals: {
     pizza: 'pizza',
     burger: 'burger',
-    all: 'alle'
+    all: 'alle',
+    name: 'name',
+    back: 'zurück'
   },
   navbar: {
     welcome: 'Willkommen bei PizGer!',

@@ -13,7 +13,7 @@ const { food } = storeToRefs(useFoodsListStore())
     </v-card-title>
     <v-col cols="12">
         <Field name="resturant.name" v-model="food.resturant.name" v-slot="{ field, errors }">
-            <v-text-field v-model.trim="food.resturant.name" label="name" variant="outlined" v-bind="field"
+            <v-text-field v-model.trim="food.resturant.name" :label="$t('generals.name')" variant="outlined" v-bind="field"
                 :error-messages="errors"></v-text-field>
         </Field>
     </v-col>
