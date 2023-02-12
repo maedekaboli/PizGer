@@ -4,7 +4,9 @@ export default {
         burger: 'burger',
         all: 'all',
         name: 'name',
-        back: 'back'
+        back: 'back',
+        close: 'close',
+        agree: 'agree'
     },
     navbar: {
         welcome: 'Welcome to PizGer!',

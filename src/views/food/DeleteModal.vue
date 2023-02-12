@@ -28,9 +28,11 @@ const close = () => {
                 </v-card-text>
                 <v-card-actions class="justify-end">
                     <v-btn :disabled="modalLoading" color="primary" variant="flat" rounded="pill" @click="onAgree">
-                        Agree
+                        {{ $t('generals.agree') }}
                     </v-btn>
-                    <v-btn rounded="pill" variant="outlined" @click="close">Close</v-btn>
+                    <v-btn rounded="pill" variant="outlined" @click="close">
+                         {{ $t('generals.close') }}
+                    </v-btn>
                 </v-card-actions>
             </v-sheet>
         </v-card>
