@@ -1,6 +1,6 @@
 <script setup>
 import TheNavbar from './navbar/TheNavbar.vue'
-import TheSidebar from './TheSidebar.vue'
+import TheSidebar from './sidebar/TheSidebar.vue'
 </script>
 
 

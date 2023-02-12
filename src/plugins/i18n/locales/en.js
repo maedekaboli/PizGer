@@ -16,5 +16,16 @@ export default {
         home: 'Home',
         addPizger: 'Add PizGer',
         statistics: 'Statistics'
+    },
+    ingredients: {
+        Tomato: 'Tomato',
+        Onion: 'Onion',
+        Garlic: 'Garlic',
+        Cheese: 'Cheese',
+        Parsley: 'Parsley',
+        Basil: 'Basil',
+        Olive: 'Olive',
+        Egg: 'Egg',
+        Sauce: 'Sauce'
     }
 }

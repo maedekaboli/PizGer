@@ -9,6 +9,6 @@ defineProps<{
 
 <template>
     <v-chip filter variant="outlined">
-        {{ IngridentsEnum[item] }}
+        {{ $t(`ingredients.${IngridentsEnum[item]}`) }}
     </v-chip>
 </template>
