@@ -1,5 +1,5 @@
 <script setup>
-import TheNavbar from './TheNavbar.vue'
+import TheNavbar from './navbar/TheNavbar.vue'
 import TheSidebar from './TheSidebar.vue'
 </script>
 
