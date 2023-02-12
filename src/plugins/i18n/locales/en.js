@@ -6,7 +6,12 @@ export default {
         name: 'name',
         back: 'back',
         close: 'close',
-        agree: 'agree'
+        agree: 'agree',
+    },
+    foodForm: {
+        price: 'price',
+        description: 'description',
+        address: 'address'
     },
     navbar: {
         welcome: 'Welcome to PizGer!',
