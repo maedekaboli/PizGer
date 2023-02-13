@@ -1,4 +1,8 @@
 export default {
+    notFound: {
+        msg: 'Page not found!',
+        btn: 'go home'
+    },
     generals: {
         pizza: 'pizza',
         burger: 'burger',
@@ -8,7 +12,11 @@ export default {
         close: 'close',
         agree: 'agree',
     },
+    validations: {
+        required: '{value} is a required field'
+    },
     foodForm: {
+        resturant: 'Resturant',
         price: 'price',
         description: 'description',
         address: 'address'
