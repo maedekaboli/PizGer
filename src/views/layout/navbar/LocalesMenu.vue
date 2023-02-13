@@ -2,9 +2,10 @@
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
 import LocaleEnum from './LocalesEnum'
+import LocalesMenuModel from './LocalesMenuModel'
 
 const { locale } = useI18n()
-const menuItems = ref([
+const menuItems = ref<LocalesMenuModel[]>([
     {
         prependAvatar: '/en.png',
         title: 'English',
