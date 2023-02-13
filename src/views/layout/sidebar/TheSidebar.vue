@@ -5,9 +5,9 @@ import { useI18n } from "vue-i18n";
 const { t } = useI18n()
 
 const sidebarItems = ref<SidebarItemModel[]>([
-    { value: 0, title: t('sidebar.home'), icon: 'home', path: '/' },
-    { value: 1, title: t('sidebar.addPizger'), icon: 'plus-circle-outline', path: '/food' },
-    { value: 2, title: t('sidebar.statistics'), icon: 'chart-pie', path: '/statistics' }
+    { value: 0, title: 'sidebar.home', icon: 'home', path: '/' },
+    { value: 1, title: 'sidebar.addPizger', icon: 'plus-circle-outline', path: '/food' },
+    { value: 2, title: 'sidebar.statistics', icon: 'chart-pie', path: '/statistics' }
 ])
 </script>
 
@@ -18,7 +18,7 @@ const sidebarItems = ref<SidebarItemModel[]>([
                 <div class="fancy-sidebar-item mb-9">
                     <b></b>
                     <b></b>
-                    <v-list-item :prepend-icon="`mdi-${item.icon}`" class="text-h6" :title="item.title"
+                    <v-list-item :prepend-icon="`mdi-${item.icon}`" class="text-h6" :title="$t(item.title)"
                         :value="item.value"></v-list-item>
                 </div>
             </RouterLink>
