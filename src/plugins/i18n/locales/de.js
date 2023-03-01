@@ -13,7 +13,8 @@ export default {
     agree: 'zustimmen',
   },
   validations: {
-    required: '{value} ist ein Pflichtfeld'
+    required: '{value} ist ein Pflichtfeld',
+    positive: '{value} muss eine positive Zahl sein'
   },
   foodForm: {
     resturant: 'Restaurant',

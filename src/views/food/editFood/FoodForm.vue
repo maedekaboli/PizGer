@@ -16,18 +16,19 @@ const ingredients = ref(Object.values(IngridentsEnum).slice(ingridentsEnumLength
         <v-col cols="12" sm="6">
             <Field name="name" v-model="food.name" v-slot="{ field, errors }">
                 <v-text-field v-bind="field" v-model.trim="food.name" :label="$t('generals.name')" variant="outlined"
-                    :error-messages="errors"></v-text-field>
+                    :error-messages="$t(errors.toString(), { value: $t('generals.name') })"></v-text-field>
             </Field>
         </v-col>
         <v-col cols="12" sm="6">
             <Field name="price" v-model="food.price" v-slot="{ field, errors }">
-                <v-text-field v-bind="field" append-inner-icon="mdi-currency-usd" v-model.number="food.price"
-                    :label="$t('foodForm.price')" variant="outlined" :error-messages="errors"></v-text-field>
+                <v-text-field v-bind="field" append-inner-icon="mdi-currency-usd" type="number" v-model.number="food.price"
+                    :label="$t('foodForm.price')" variant="outlined"
+                    :error-messages="$t(errors.toString(), { value: $t('foodForm.price') })"></v-text-field>
             </Field>
         </v-col>
         <v-col cols="12">
-            <v-textarea v-model.trim="food.desc" :label="$t('foodForm.description')" auto-grow variant="outlined" rows="3"
-                row-height="25" shaped></v-textarea>
+            <v-textarea v-model.trim="food.desc" :label="$t('foodForm.description')" auto-grow variant="outlined"
+                rows="3" row-height="25" shaped></v-textarea>
         </v-col>
     </v-row>
     <v-row>

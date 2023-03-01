@@ -8,7 +8,9 @@ import SelectedFoodType from '../models/SelectedFoodType'
 import { foods, selectedFood } from './EditFoodButtons'
 import * as yup from 'yup';
 import { Form } from 'vee-validate'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const route = useRoute()
 const AppToggleButton = defineAsyncComponent(() => import('../../../components/AppToggleButton.vue'))
 const ResturantForm = defineAsyncComponent(() => import('./ResturantForm.vue'))
@@ -16,12 +18,13 @@ const FoodForm = defineAsyncComponent(() => import('./FoodForm.vue'))
 const { addFood, getFood, editFood, resetFood } = useFoodsListStore()
 const { loading, food } = storeToRefs(useFoodsListStore())
 const btnName = ref('add')
+
 const schema = yup.object({
-    name: yup.string().required().label('Name'),
-    price: yup.number().required().positive().typeError('Price must be a number').label('Price'),
+    name: yup.string().required('validations.required').label(t('generals.name')),
+    price: yup.number().required('validations.required').positive('validations.positive').label(t('foodForm.price')),
     resturant: yup.object({
-        name: yup.string().required().label('Name'),
-        address: yup.string().required().label('Address')
+        name: yup.string().required('validations.required').label(t('generals.name')),
+        address: yup.string().required('validations.required').label(t('foodForm.address'))
     })
 });
 
