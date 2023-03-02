@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, defineAsyncComponent } from 'vue'
 import useFoodsListStore from '../../stores/food/FoodsListStore'
 import { storeToRefs } from 'pinia'
 // import SelectedFoodType from '../models/SelectedFoodType'
@@ -7,6 +7,7 @@ import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
+const Ingredient = defineAsyncComponent(() => import('./ingredients/Ingredient.vue'))
 const route = useRoute()
 const { t } = useI18n()
 const { getFood } = useFoodsListStore()
@@ -34,8 +35,8 @@ getFood(~~route.params.id)
                         description: {{ food.desc }}
                     </v-col>
                     <v-col cols="12">
-                        <v-chip-group v-model="food.ingredients" selected-class="text-success" column multiple>
-                            <template v-for="item in ingredients" :key="item">
+                        <v-chip-group disabled class="text-success">
+                            <template v-for="item in food.ingredients" :key="item">
                                 <Ingredient :item="item.toString()"></Ingredient>
                             </template>
                         </v-chip-group>

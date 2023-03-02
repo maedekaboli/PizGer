@@ -54,7 +54,7 @@ const lazySrc = computed(() => {
                 <router-link :to="`/food/detail/${food.id}`">
                     <v-btn color="blue" variant="outlined" size="x-small" icon="mdi-dots-horizontal"></v-btn>
                 </router-link>
-                <router-link :to="`/food/detail/${food.id}`">
+                <router-link :to="`/food/edit/${food.id}`">
                     <v-btn color="orange" class="ml-2" variant="outlined" size="x-small" icon="mdi-pencil-outline"></v-btn>
                 </router-link>
                 <v-btn @click="onShowDeleteModal" color="red" class="ml-2" variant="outlined" size="x-small"
