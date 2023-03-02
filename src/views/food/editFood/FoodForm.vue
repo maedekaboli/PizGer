@@ -12,7 +12,7 @@ const ingredients = ref(Object.values(IngridentsEnum).slice(ingridentsEnumLength
 </script>
 
 <template>
-    <v-row>
+    <v-row class="pr-3">
         <v-col cols="12" sm="6">
             <Field name="name" v-model="food.name" v-slot="{ field, errors }">
                 <v-text-field v-bind="field" v-model.trim="food.name" :label="$t('generals.name')" variant="outlined"

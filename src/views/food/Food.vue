@@ -28,13 +28,15 @@ const lazySrc = computed(() => {
 <template>
     <v-col cols="md-4 Product" sm="6">
         <v-card class="mx-auto" min-height="375px">
-            <v-img :lazySrc="lazySrc" :src="foodImg" height="200px" cover>
-                <template v-slot:placeholder>
-                    <div class="d-flex align-end justify-center fill-height">
-                        <v-progress-linear color="#6200ee" indeterminate></v-progress-linear>
-                    </div>
-                </template>
-            </v-img>
+            <router-link :to="`/food/edit/${food.id}`">
+                <v-img :lazySrc="lazySrc" :src="foodImg" height="200px" cover>
+                    <template v-slot:placeholder>
+                        <div class="d-flex align-end justify-center fill-height">
+                            <v-progress-linear color="#6200ee" indeterminate></v-progress-linear>
+                        </div>
+                    </template>
+                </v-img>
+            </router-link>
             <Transition name="fade">
                 <v-card-title class="pb-0">
                     {{ food.name }}
@@ -49,8 +51,11 @@ const lazySrc = computed(() => {
             </v-chip>
 
             <v-card-actions>
-                <router-link :to="`/food/${food.id}`">
-                    <v-btn color="blue" variant="outlined" size="x-small" icon="mdi-pencil-outline"></v-btn>
+                <router-link :to="`/food/detail/${food.id}`">
+                    <v-btn color="blue" variant="outlined" size="x-small" icon="mdi-dots-horizontal"></v-btn>
+                </router-link>
+                <router-link :to="`/food/detail/${food.id}`">
+                    <v-btn color="orange" class="ml-2" variant="outlined" size="x-small" icon="mdi-pencil-outline"></v-btn>
                 </router-link>
                 <v-btn @click="onShowDeleteModal" color="red" class="ml-2" variant="outlined" size="x-small"
                     icon="mdi-trash-can-outline"></v-btn>

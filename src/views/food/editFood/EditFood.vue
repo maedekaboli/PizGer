@@ -29,7 +29,7 @@ const schema = yup.object({
 });
 
 onBeforeRouteLeave((to) => {
-    if (to.path == '/food') {
+    if (to.path == '/food/create') {
         resetFood()
         btnName.value = 'add'
     }
@@ -71,7 +71,7 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
                     </v-card-title>
                     <FoodForm></FoodForm>
                 </v-col>
-                <v-col cols="md-5" class="border-left resturant mb-3">
+                <v-col cols="md-5" class="border-left resturant mb-3 pr-0">
                     <ResturantForm></ResturantForm>
                 </v-col>
             </v-row>
