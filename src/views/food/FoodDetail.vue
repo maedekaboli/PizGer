@@ -31,10 +31,10 @@ getFood(~~route.params.id)
                     <v-col cols="12">
                         Prise: {{ food.price }}
                     </v-col>
-                    <v-col cols="12">
+                    <v-col cols="12" v-if="food.desc">
                         description: {{ food.desc }}
                     </v-col>
-                    <v-col cols="12">
+                    <v-col cols="12" v-if="food.ingredients.length > 0">
                         <v-chip-group disabled class="text-success">
                             <template v-for="item in food.ingredients" :key="item">
                                 <Ingredient :item="item.toString()"></Ingredient>
@@ -57,7 +57,7 @@ getFood(~~route.params.id)
         </v-row>
     </v-card>
     <router-link to="/food/edit/1">
-        <v-btn rounded="pill" class="mt-5 ml-4" size="large" color="primary">
+        <v-btn rounded="pill" class="mt-5" size="large" color="primary">
             edit
         </v-btn>
     </router-link>

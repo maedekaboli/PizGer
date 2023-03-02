@@ -10,7 +10,10 @@ const props = defineProps<{
 
 const show = ref(false);
 const { showModal, foodToDelete } = storeToRefs(useFoodsListStore())
-
+const cardActionBtns = ref([
+    { tooltip: 'detail', icon: 'mdi-dots-horizontal', color: 'blue', link: 'detail' },
+    { tooltip: 'edit', icon: 'mdi-pencil-outline', color: 'orange', link: 'edit' },
+])
 const onShowDeleteModal = () => {
     showModal.value = true;
     foodToDelete.value = props.food
@@ -51,18 +54,25 @@ const lazySrc = computed(() => {
             </v-chip>
 
             <v-card-actions>
-                <router-link :to="`/food/detail/${food.id}`">
-                    <v-btn color="blue" variant="outlined" size="x-small" icon="mdi-dots-horizontal"></v-btn>
-                </router-link>
-                <router-link :to="`/food/edit/${food.id}`">
-                    <v-btn color="orange" class="ml-2" variant="outlined" size="x-small" icon="mdi-pencil-outline"></v-btn>
-                </router-link>
-                <v-btn @click="onShowDeleteModal" color="red" class="ml-2" variant="outlined" size="x-small"
-                    icon="mdi-trash-can-outline"></v-btn>
+                <template v-for="(btn, index) in cardActionBtns" :key="index">
+                    <router-link :to="`/food/${btn.link}/${props.food.id}`">
+                        <v-btn :color="btn.color" variant="outlined" class="mr-2" icon
+                            size="x-small">
+                            <v-icon>{{ btn.icon }}</v-icon>
+                            <v-tooltip activator="parent" location="bottom">{{ btn.tooltip }}</v-tooltip>
+                        </v-btn>
+                    </router-link>
+                </template>
+                <v-btn @click="onShowDeleteModal" color="red" icon variant="outlined" size="x-small">
+                    <v-icon>mdi-trash-can-outline</v-icon>
+                    <v-tooltip activator="parent" location="bottom">delete</v-tooltip>
+                </v-btn>
                 <v-spacer></v-spacer>
 
-                <v-btn v-if="food.desc" :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-                    @click="show = !show"></v-btn>
+                <v-btn v-if="food.desc" icon @click="show = !show">
+                    <v-icon>mdi-{{ show? 'chevron-up': 'chevron-down' }}</v-icon>
+                    <v-tooltip activator="parent" location="bottom">description</v-tooltip>
+                </v-btn>
             </v-card-actions>
 
             <v-expand-transition>
