@@ -6,7 +6,7 @@ const { t } = useI18n()
 
 const sidebarItems = ref<SidebarItemModel[]>([
     { value: 0, title: 'sidebar.home', icon: 'home', path: '/' },
-    { value: 1, title: 'sidebar.addPizger', icon: 'plus-circle-outline', path: '/food' },
+    { value: 1, title: 'sidebar.addPizger', icon: 'plus-circle-outline', path: '/food/create' },
     { value: 2, title: 'sidebar.statistics', icon: 'chart-pie', path: '/statistics' }
 ])
 </script>
