@@ -14,7 +14,8 @@ export default {
     delete: 'löschen',
     edit: 'bearbeiten',
     detail: 'detail',
-    description: 'Beschreibung'
+    description: 'Beschreibung',
+    add:'hinzufügen'
   },
   validations: {
     required: '{value} ist ein Pflichtfeld',

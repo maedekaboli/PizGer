@@ -14,7 +14,8 @@ export default {
         delete: 'delete',
         edit: 'edit',
         detail: 'detail',
-        description: 'description'
+        description: 'description',
+        add: 'add'
     },
     validations: {
         required: '{value} is a required field',

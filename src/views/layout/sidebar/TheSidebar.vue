@@ -41,6 +41,12 @@ const sidebarItems = ref<SidebarItemModel[]>([
             .v-list-item {
                 background: none;
                 color: white;
+
+                .v-list-item__prepend {
+                    .v-icon {
+                        margin-inline-end: 12px;
+                    }
+                }
             }
 
             .v-list-item--rounded {

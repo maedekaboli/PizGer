@@ -17,7 +17,7 @@ const ResturantForm = defineAsyncComponent(() => import('./ResturantForm.vue'))
 const FoodForm = defineAsyncComponent(() => import('./FoodForm.vue'))
 const { addFood, getFood, editFood, resetFood } = useFoodsListStore()
 const { loading, food } = storeToRefs(useFoodsListStore())
-const btnName = ref('add')
+const btnName = ref('generals.add')
 
 const schema = yup.object({
     name: yup.string().required('validations.required').label(t('generals.name')),
@@ -31,12 +31,12 @@ const schema = yup.object({
 onBeforeRouteLeave((to) => {
     if (to.path == '/food/create') {
         resetFood()
-        btnName.value = 'add'
+        btnName.value = 'generals.add'
     }
 })
 
 if (route.params.id) {
-    btnName.value = 'edit'
+    btnName.value = 'generals.edit'
     getFood(~~route.params.id)
 }
 
@@ -77,7 +77,7 @@ const onToggleBtns = (selectedBtn: SelectedFoodType) => {
             </v-row>
         </v-card>
         <v-btn type="submit" :disabled="loading" rounded="pill" class="mt-5" size="large" color="primary">
-            {{ btnName }} {{ selectedFood.name }}
+            {{ $t(btnName) }} {{ selectedFood.name }}
         </v-btn>
         <router-link to="/">
             <v-btn rounded="pill" class="mt-5 ml-4" size="large" color="black" variant="outlined">
