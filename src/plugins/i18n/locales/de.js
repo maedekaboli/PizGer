@@ -11,6 +11,10 @@ export default {
     back: 'zurück',
     close: 'schließen',
     agree: 'zustimmen',
+    delete: 'löschen',
+    edit: 'bearbeiten',
+    detail: 'detail',
+    description: 'Beschreibung'
   },
   validations: {
     required: '{value} ist ein Pflichtfeld',

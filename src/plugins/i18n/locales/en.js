@@ -11,10 +11,14 @@ export default {
         back: 'back',
         close: 'close',
         agree: 'agree',
+        delete: 'delete',
+        edit: 'edit',
+        detail: 'detail',
+        description: 'description'
     },
     validations: {
         required: '{value} is a required field',
-        positive:'{value} must be a positive number'
+        positive: '{value} must be a positive number'
     },
     foodForm: {
         resturant: 'Resturant',

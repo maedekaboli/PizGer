@@ -11,8 +11,8 @@ const props = defineProps<{
 const show = ref(false);
 const { showModal, foodToDelete } = storeToRefs(useFoodsListStore())
 const cardActionBtns = ref([
-    { tooltip: 'detail', icon: 'mdi-dots-horizontal', color: 'blue', link: 'detail' },
-    { tooltip: 'edit', icon: 'mdi-pencil-outline', color: 'orange', link: 'edit' },
+    { tooltip: 'generals.detail', icon: 'mdi-dots-horizontal', color: 'blue', link: 'detail' },
+    { tooltip: 'generals.edit', icon: 'mdi-pencil-outline', color: 'orange', link: 'edit' },
 ])
 const onShowDeleteModal = () => {
     showModal.value = true;
@@ -31,7 +31,7 @@ const lazySrc = computed(() => {
 <template>
     <v-col cols="md-4 Product" sm="6">
         <v-card class="mx-auto" min-height="375px">
-            <router-link :to="`/food/edit/${food.id}`">
+            <router-link :to="`/food/detail/${food.id}`">
                 <v-img :lazySrc="lazySrc" :src="foodImg" height="200px" cover>
                     <template v-slot:placeholder>
                         <div class="d-flex align-end justify-center fill-height">
@@ -59,19 +59,19 @@ const lazySrc = computed(() => {
                         <v-btn :color="btn.color" variant="outlined" class="mr-2" icon
                             size="x-small">
                             <v-icon>{{ btn.icon }}</v-icon>
-                            <v-tooltip activator="parent" location="bottom">{{ btn.tooltip }}</v-tooltip>
+                            <v-tooltip activator="parent" location="bottom">{{ $t(btn.tooltip) }}</v-tooltip>
                         </v-btn>
                     </router-link>
                 </template>
                 <v-btn @click="onShowDeleteModal" color="red" icon variant="outlined" size="x-small">
                     <v-icon>mdi-trash-can-outline</v-icon>
-                    <v-tooltip activator="parent" location="bottom">delete</v-tooltip>
+                    <v-tooltip activator="parent" location="bottom">{{ $t('generals.delete') }}</v-tooltip>
                 </v-btn>
                 <v-spacer></v-spacer>
 
                 <v-btn v-if="food.desc" icon @click="show = !show">
                     <v-icon>mdi-{{ show? 'chevron-up': 'chevron-down' }}</v-icon>
-                    <v-tooltip activator="parent" location="bottom">description</v-tooltip>
+                    <v-tooltip activator="parent" location="bottom">{{ $t('generals.description') }}</v-tooltip>
                 </v-btn>
             </v-card-actions>
 
